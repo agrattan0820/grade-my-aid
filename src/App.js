@@ -4,14 +4,12 @@ import "./App.css";
 function App() {
   const [universities, setUniversities] = useState([]);
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getUniversityData();
   }, []);
 
   const getUniversityData = async () => {
-    setLoading(true);
     const response = await fetch("./universityData.json");
     const data = await response.json();
     const singleYearData = await data.filter((school) => school.year === 2015);
@@ -19,7 +17,6 @@ function App() {
       (school) => school.country === "USA"
     );
     setUniversities(unitedStatesData);
-    setLoading(false);
     console.log(unitedStatesData);
   };
 
