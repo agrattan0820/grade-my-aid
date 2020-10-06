@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import SearchDropdown from "./SearchDropdown";
 
 function App() {
   const [universities, setUniversities] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getUniversityData();
@@ -20,28 +20,12 @@ function App() {
     console.log(unitedStatesData);
   };
 
-  const filteredData = universities.filter((university) => {
-    return university.institution.toLowerCase().includes(search.toLowerCase());
-  });
-
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
   return (
     <div className="App">
       <header>
         <h1>Check My Aid</h1>
-        <input
-          className="search-bar"
-          type="text"
-          value={search}
-          onChange={updateSearch}
-        />
-        <div className="school-container">
-          {filteredData.map((university, index) => (
-            <p key={index}>{university.institution}</p>
-          ))}
+        <div className="school-dropdown">
+          <SearchDropdown data={universities} />
         </div>
       </header>
     </div>
