@@ -52,6 +52,7 @@ function SearchDropdown({ data }) {
               className="option"
               key={index}
               tabIndex="0"
+              value={university}
             >
               <span>{university.institution}</span>
             </div>

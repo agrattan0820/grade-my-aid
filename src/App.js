@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
+import SubmitButton from "./SubmitButton";
 
 function App() {
   const [universities, setUniversities] = useState([]);
@@ -33,10 +34,15 @@ function App() {
       <div className="step2-container">
         <h3>Step 2:</h3>
         <p>How much aid did you get?</p>
-        <SearchDropdown data={universities} />
+        <input
+          type="number"
+          className="aid-input"
+          placeholder="Amount of aid"
+        />
       </div>
       <div className="step3-container">
-        <button className="submit-btn">GET YOUR RATING</button>
+        <h3>Step 3:</h3>
+        <SubmitButton />
       </div>
     </div>
   );
