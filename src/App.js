@@ -23,11 +23,21 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Check My Aid</h1>
-        <div className="school-dropdown">
-          <SearchDropdown data={universities} />
-        </div>
+        <h1>checkmyaid</h1>
       </header>
+      <div className="step1-container">
+        <h3>Step 1:</h3>
+        <p>Choose a school</p>
+        <SearchDropdown data={universities} />
+      </div>
+      <div className="step2-container">
+        <h3>Step 2:</h3>
+        <p>How much aid did you get?</p>
+        <SearchDropdown data={universities} />
+      </div>
+      <div className="step3-container">
+        <button className="submit-btn">GET YOUR RATING</button>
+      </div>
     </div>
   );
 }

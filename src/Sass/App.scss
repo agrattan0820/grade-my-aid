@@ -1,7 +1,56 @@
 @import "./variables";
-@import "./Dropdown";
+@import "./SearchDropdown";
 
 .App {
   text-align: center;
   margin: auto;
+  font-family: $mainFont;
+  color: white;
+}
+
+header {
+  h1 {
+    font-family: $mainFont;
+    font-weight: 300;
+    color: whitesmoke;
+  }
+}
+
+.step1-container {
+  width: 300px;
+  height: 200px;
+  border-radius: 15px;
+  background-color: #7da3e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem auto;
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  p {
+    margin-top: 0.05rem;
+    font-weight: 300;
+  }
+}
+
+.step2-container {
+  @extend .step1-container;
+}
+
+.step3-container {
+  @extend .step1-container;
+  .submit-btn {
+    width: 200px;
+    height: 50px;
+    font-family: $mainFont;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #ff6f61, #fd402d);
+    height: 50px;
+    color: white;
+  }
 }
