@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 
 function App() {

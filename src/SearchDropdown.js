@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useEffect, useState, useRef } from "react";
+import "./Sass/App.scss";
 
 function SearchDropdown({ data }) {
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState(false);
+  const wrapperRef = useRef(null);
 
   const filteredData = data.filter((university) => {
     return university.institution.toLowerCase().includes(search.toLowerCase());
@@ -18,8 +19,23 @@ function SearchDropdown({ data }) {
     setDisplay(false);
   };
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.addEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (e) => {
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(e.target)) {
+      setDisplay(false);
+    }
+  };
+
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={wrapperRef}>
       <input
         className="search-bar"
         placeholder="Search for a school"
@@ -35,6 +51,7 @@ function SearchDropdown({ data }) {
               onClick={() => clickSearch(university.institution)}
               className="option"
               key={index}
+              tabIndex="0"
             >
               <span>{university.institution}</span>
             </div>

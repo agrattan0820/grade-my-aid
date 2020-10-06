@@ -1,0 +1,26 @@
+@import "./variables";
+
+.dropdown {
+  width: 200px;
+  margin: auto;
+  input {
+    width: 100%;
+  }
+  .dropdown-schools {
+    position: absolute;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: aquamarine;
+    background-color: aliceblue;
+    width: 200px;
+    max-height: 500px;
+    overflow-y: scroll;
+
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      text-align: left;
+    }
+  }
+}
