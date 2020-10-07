@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import "./Sass/App.scss";
+import { UniversityContext } from "./UniversityContext";
 
-function SearchDropdown({ data }) {
+function SearchDropdown() {
+  const data = useContext(UniversityContext);
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
