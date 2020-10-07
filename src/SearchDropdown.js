@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
+import { FormContext } from "./FormContext";
 
-function SearchDropdown() {
+const SearchDropdown = () => {
   const data = useContext(UniversityContext);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useContext(FormContext);
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -63,6 +64,6 @@ function SearchDropdown() {
       )}
     </div>
   );
-}
+};
 
 export default SearchDropdown;

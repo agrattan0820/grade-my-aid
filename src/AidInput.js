@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./Sass/App.scss";
+import { FormContext } from "./FormContext";
 
 function AidInput() {
-  const [value, setValue] = useState("");
+  const [aidValue, setAidValue] = useContext(FormContext);
 
   const updateAidValue = (e) => {
-    setValue(e.target.value);
+    setAidValue(e.target.value);
   };
 
   return (
@@ -14,7 +15,7 @@ function AidInput() {
         type="number"
         className="aid-input"
         placeholder="Amount of aid"
-        value={value}
+        value={aidValue}
         onChange={updateAidValue}
       />
     </div>
