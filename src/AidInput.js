@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Sass/App.scss";
 import { FormContext } from "./FormContext";
 
 function AidInput() {
-  const [aidValue, setAidValue] = useContext(FormContext);
+  const { aid } = React.useContext(FormContext);
+  const [aidValue, setAidValue] = aid;
 
   const updateAidValue = (e) => {
     setAidValue(e.target.value);

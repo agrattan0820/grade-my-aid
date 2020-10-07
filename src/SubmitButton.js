@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Sass/App.scss";
 import { FormContext } from "./FormContext";
 
 function SubmitButton() {
-  const [aidValue, setAidValue] = useContext(FormContext);
-  const [search, setSearch] = useContext(FormContext);
+  const { aid, dropdown } = React.useContext(FormContext);
+  const [aidValue, setAidValue] = aid;
+  const [search, setSearch] = dropdown;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hello there");
+    console.log(
+      `This is the aid value: ${aidValue}\nand this is the search value: ${search}`
+    );
+    setAidValue("");
+    setSearch("");
   };
   return (
     <div>

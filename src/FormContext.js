@@ -7,7 +7,7 @@ export const FormProvider = (props) => {
   const [search, setSearch] = useState("");
   return (
     <FormContext.Provider
-      value={([aidValue, setAidValue], [search, setSearch])}
+      value={{ aid: [aidValue, setAidValue], dropdown: [search, setSearch] }}
     >
       {props.children}
     </FormContext.Provider>

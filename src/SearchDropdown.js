@@ -3,9 +3,10 @@ import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 
-const SearchDropdown = () => {
+function SearchDropdown() {
   const data = useContext(UniversityContext);
-  const [search, setSearch] = useContext(FormContext);
+  const { dropdown } = React.useContext(FormContext);
+  const [search, setSearch] = dropdown;
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -64,6 +65,6 @@ const SearchDropdown = () => {
       )}
     </div>
   );
-};
+}
 
 export default SearchDropdown;
