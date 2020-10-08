@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
@@ -76,6 +77,12 @@ function ScoreResult() {
     }
   };
 
+  const handleBack = () => {
+    setScore("");
+    setAidValue("");
+    setSearch("");
+  };
+
   return (
     <div className="score-page-container">
       <header>
@@ -84,6 +91,13 @@ function ScoreResult() {
       <div className="score-result-container">
         <span>Grade:</span>
         <div className="grade">{score}</div>
+        <div>
+          <Link to="/">
+            <button className="gradient-btn" onClick={handleBack}>
+              GO BACK
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

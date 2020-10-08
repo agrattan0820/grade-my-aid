@@ -47,26 +47,27 @@ header {
 
 .step3-container {
   @extend .step1-container;
-  .submit-btn {
-    width: 200px;
-    height: 50px;
-    cursor: pointer;
-    font-family: $mainFont;
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    background: linear-gradient(to left, #ff6f61, #fd402d);
-    background-size: 200% auto;
-    height: 50px;
-    color: white;
-    transition: all 0.3s ease;
-    &:hover {
-      background-position: right center;
-    }
-  }
 
   h3 {
     margin-bottom: 1rem;
+  }
+}
+
+.gradient-btn {
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  font-family: $mainFont;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  background: linear-gradient(to left, #ff6f61, #fd402d);
+  background-size: 200% auto;
+  height: 50px;
+  color: white;
+  transition: all 0.3s ease;
+  &:hover {
+    background-position: right center;
   }
 }
 

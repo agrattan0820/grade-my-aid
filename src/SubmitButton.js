@@ -5,8 +5,8 @@ import { FormContext } from "./FormContext";
 
 function SubmitButton() {
   const { aid, dropdown } = React.useContext(FormContext);
-  const [aidValue, setAidValue] = aid;
-  const [search, setSearch] = dropdown;
+  const [aidValue] = aid;
+  const [search] = dropdown;
 
   const handleSubmit = (e) => {
     console.log(
@@ -16,7 +16,7 @@ function SubmitButton() {
   return (
     <div>
       <Link to="/result">
-        <button type="submit" className="submit-btn" onClick={handleSubmit}>
+        <button type="submit" className="gradient-btn" onClick={handleSubmit}>
           GET YOUR RATING
         </button>
       </Link>
