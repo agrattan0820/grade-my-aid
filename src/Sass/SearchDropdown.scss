@@ -1,6 +1,7 @@
 @import "./variables";
 
 .dropdown {
+  z-index: 2;
   .dropdown-schools {
     position: absolute;
     background-color: whitesmoke;
