@@ -4,13 +4,13 @@ import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 
 function SearchDropdown() {
-  const data = useContext(UniversityContext);
+  const universities = useContext(UniversityContext);
   const { dropdown } = React.useContext(FormContext);
   const [search, setSearch] = dropdown;
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
-  const filteredData = data.filter((university) => {
+  const filteredData = universities.filter((university) => {
     return university.institution.toLowerCase().includes(search.toLowerCase());
   });
 

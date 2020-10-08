@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sass/App.scss";
 import { FormContext } from "./FormContext";
 
@@ -8,18 +9,17 @@ function SubmitButton() {
   const [search, setSearch] = dropdown;
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     console.log(
       `This is the aid value: ${aidValue}\nand this is the search value: ${search}`
     );
-    setAidValue("");
-    setSearch("");
   };
   return (
     <div>
-      <button type="submit" className="submit-btn" onClick={handleSubmit}>
-        GET YOUR RATING
-      </button>
+      <Link to="/result">
+        <button type="submit" className="submit-btn" onClick={handleSubmit}>
+          GET YOUR RATING
+        </button>
+      </Link>
     </div>
   );
 }
