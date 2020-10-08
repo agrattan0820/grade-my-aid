@@ -18,15 +18,19 @@ header {
 }
 
 .step1-container {
+  position: relative;
+  right: 75px;
   width: 300px;
   height: 200px;
+  padding: 2rem;
   border-radius: 15px;
   background-color: #7da3e9;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
-  margin: 1rem auto;
+  margin: 3rem auto;
+  box-sizing: border-box;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
@@ -43,6 +47,8 @@ header {
 
 .step2-container {
   @extend .step1-container;
+  left: 75px;
+  align-items: flex-start;
 }
 
 .step3-container {

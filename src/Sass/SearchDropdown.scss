@@ -1,12 +1,11 @@
 @import "./variables";
 
 .dropdown {
-  margin: 0 auto;
   .dropdown-schools {
     position: absolute;
     background-color: whitesmoke;
     width: 200px;
-    max-height: 200px;
+    max-height: 150px;
     overflow-y: scroll;
     box-sizing: border-box;
 
