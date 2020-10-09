@@ -58,54 +58,52 @@ function ScoreResult() {
     } else if (outStateTuition - aidValue < 5000) {
       pointCounter += 35;
     } else if (outStateTuition - aidValue < 7500) {
-      pointCounter += 30;
-    } else if (outStateTuition - aidValue < 10000) {
       pointCounter += 25;
+    } else if (outStateTuition - aidValue < 10000) {
+      pointCounter += 10;
     } else if (outStateTuition - aidValue < 15000) {
-      pointCounter += 15;
-    } else if (outStateTuition - aidValue < 25000) {
       pointCounter += 5;
-    } else {
-      pointCounter += 2;
+    } else if (outStateTuition - aidValue < 25000) {
+      pointCounter += 1;
     }
-    }
+  }
 
 
 
     if (year10outlook >= 100000) {
       pointCounter += 50;
     } else if (year10outlook >= 75000) {
-      pointCounter += 45;
-    } else if (year10outlook >= 60000) {
       pointCounter += 40;
-    } else if (year10outlook >= 50000) {
+    } else if (year10outlook >= 60000) {
       pointCounter += 30;
+    } else if (year10outlook >= 50000) {
+      pointCounter += 20;
     } else if (year10outlook >= 40000) {
-      pointCounter += 25;
-    } else if (year10outlook >= 30000) {
       pointCounter += 15;
+    } else if (year10outlook >= 30000) {
+      pointCounter += 5;
     } else if (year10outlook >= 20000){
-      pointCounter += 5
+      pointCounter += 1
     }
 
     if (pointCounter >= 100) {
       setScore("A+");
     } else if (pointCounter >= 85) {
       setScore("A");
-    } else if (pointCounter >= 75) {
+    } else if (pointCounter >= 80) {
       setScore("A-");
-    } else if (pointCounter >= 60) {
+    } else if (pointCounter >= 75) {
       setScore("B+");
-    } else if (pointCounter >= 50) {
+    } else if (pointCounter >= 70) {
       setScore("B");
-    } else if (pointCounter >= 40) {
+    } else if (pointCounter >= 65) {
       setScore("B-");
-    } else if (pointCounter >= 25) {
+    } else if (pointCounter >= 50) {
       setScore("C+");
-    } else if (pointCounter >= 20) {
+    } else if (pointCounter >= 40) {
       setScore("C");
     } else {
-      setScore("C-");
+      setScore("D");
     }
 
   };
