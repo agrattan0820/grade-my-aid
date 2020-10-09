@@ -11,54 +11,59 @@ function ScoreResult() {
   const [search, setSearch] = dropdown;
   const [location, setLocation] = locate;
   const [score, setScore] = useState("");
+
   const filteredData = universities.filter((university) => {
       return university.INSTNM.toLowerCase().includes(search.toLowerCase());
     }).splice(0, 50);
 
   const filteredSchool = filteredData[0];
 
+  const inStateTution = filteredSchool.TUITIONFEE_IN;
+  const outStateTuition = filteredSchool.TUITIONFEE_OUT;
+  const year10outlook = filteredSchool.MD_EARN_WNE_P10;
+
   useEffect(() => {
     computeScore();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   const computeScore = () => {
     let pointCounter = 0;
 
-    if (location === "inState") {
-    if (filteredSchool.TUITIONFEE_IN - aidValue < 0) {
-      console.log("aid added");
+
+  if (location === "inState") {
+    if (inStateTution - aidValue < 0) {
       pointCounter += 50;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 1000) {
+    } else if (inStateTution - aidValue < 1000) {
       pointCounter += 40;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 5000) {
+    } else if (inStateTution - aidValue < 5000) {
       pointCounter += 35;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 7500) {
+    } else if (inStateTution - aidValue < 7500) {
       pointCounter += 30;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 10000) {
+    } else if (inStateTution - aidValue < 10000) {
       pointCounter += 25;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 15000) {
+    } else if (inStateTution - aidValue < 15000) {
       pointCounter += 15;
-    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 25000) {
+    } else if (inStateTution - aidValue < 25000) {
       pointCounter += 5;
     } else {
       pointCounter += 2;
     }
 
     } else if (location === "outState") {
-      if (filteredSchool.TUITIONFEE_OUT - aidValue < 0) {
-      console.log("aid added");
+      if (outStateTuition - aidValue < 0) {
       pointCounter += 50;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 1000) {
+    } else if (outStateTuition - aidValue < 1000) {
       pointCounter += 40;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 5000) {
+    } else if (outStateTuition - aidValue < 5000) {
       pointCounter += 35;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 7500) {
+    } else if (outStateTuition - aidValue < 7500) {
       pointCounter += 30;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 10000) {
+    } else if (outStateTuition - aidValue < 10000) {
       pointCounter += 25;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 15000) {
+    } else if (outStateTuition - aidValue < 15000) {
       pointCounter += 15;
-    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 25000) {
+    } else if (outStateTuition - aidValue < 25000) {
       pointCounter += 5;
     } else {
       pointCounter += 2;
@@ -67,32 +72,20 @@ function ScoreResult() {
 
 
 
-    if (filteredSchool.MD_EARN_WNE_P10 >= 100000) {
+    if (year10outlook >= 100000) {
       pointCounter += 50;
-      console.log("national added");
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 75000) {
+    } else if (year10outlook >= 75000) {
       pointCounter += 45;
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 60000) {
+    } else if (year10outlook >= 60000) {
       pointCounter += 40;
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 50000) {
+    } else if (year10outlook >= 50000) {
       pointCounter += 30;
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 40000) {
+    } else if (year10outlook >= 40000) {
       pointCounter += 25;
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 30000) {
+    } else if (year10outlook >= 30000) {
       pointCounter += 15;
-    } else if (filteredSchool.MD_EARN_WNE_P10 >= 20000){
+    } else if (year10outlook >= 20000){
       pointCounter += 5
-    }
-
-
-    if (filteredSchool != null && pointCounter > 0) {
-      console.log("Hey student");
-      console.log(filteredData);
-      console.log(filteredSchool.INSTNM);
-      console.log(filteredSchool.MD_EARN_WNE_P10);
-      console.log(filteredSchool.TUITIONFEE_IN);
-      console.log(filteredSchool.TUITIONFEE_OUT)
-      console.log(pointCounter);
     }
 
     if (pointCounter >= 100) {
@@ -114,14 +107,14 @@ function ScoreResult() {
     } else {
       setScore("C-");
     }
+
   };
 
-  const handleBack = () => {
-    setScore("");
+  const handleBackButton = () => {
     setAidValue("");
-    setSearch("");
     setLocation("");
-  };
+    setSearch("");
+  }
 
   return (
     <div className="score-page-container">
@@ -131,11 +124,11 @@ function ScoreResult() {
       <div className="score-result-container">
         <span>Grade:</span>
         <div className="grade">{score}</div>
-        <span>Median Ten Year Salary: {filteredSchool.MD_EARN_WNE_P10.toLocaleString()}</span>
-        <span>Tuition: {location === "inState" ? filteredSchool.TUITIONFEE_IN.toLocaleString() : filteredSchool.TUITIONFEE_OUT.toLocaleString()}</span>
+        <span>Median Ten Year Salary: {year10outlook.toLocaleString()}</span>
+        <span>Tuition: {location === "inState" ? inStateTution.toLocaleString() : outStateTuition.toLocaleString()}</span>
         <div>
           <Link to="/">
-            <button className="gradient-btn" onClick={handleBack}>
+            <button className="gradient-btn" onClick={handleBackButton}>
               GO BACK
             </button>
           </Link>

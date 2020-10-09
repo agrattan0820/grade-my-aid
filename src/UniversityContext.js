@@ -3,11 +3,15 @@ import React, { createContext, useState, useEffect } from "react";
 export const UniversityContext = createContext();
 
 export const UniversityProvider = (props) => {
-  const [universities, setUniversities] = useState([]);
+  const [universities, setUniversities] = useState(() => {
+    const localData = localStorage.getItem("universities");
+    return localData ? JSON.parse(localData) : [];
+  });
 
   useEffect(() => {
     getUniversityData();
-  }, []);
+    localStorage.setItem("universities", JSON.stringify(universities))
+  }, [universities]);
 
   const getUniversityData = async () => {
     const response = await fetch("./DE_Colleges_NewData.json");
@@ -20,7 +24,6 @@ export const UniversityProvider = (props) => {
         school.TUITIONFEE_OUT !== "NULL"
     );
     setUniversities(nonNullData);
-    console.log(nonNullData);
   };
 
   return (
