@@ -10,14 +10,17 @@ export const UniversityProvider = (props) => {
   }, []);
 
   const getUniversityData = async () => {
-    const response = await fetch("./universityData.json");
+    const response = await fetch("./DE_Colleges_NewData.json");
     const data = await response.json();
-    const singleYearData = await data.filter((school) => school.year === 2015);
-    const unitedStatesData = await singleYearData.filter(
-      (school) => school.country === "USA"
+    const nonNullData = await data.filter(
+      (school) =>
+        school.MD_EARN_WNE_P10 !== "NULL" &&
+        school.INSTURL !== "NULL" &&
+        school.TUITIONFEE_IN !== "NULL" &&
+        school.TUITIONFEE_OUT !== "NULL"
     );
-    setUniversities(unitedStatesData);
-    console.log(unitedStatesData);
+    setUniversities(nonNullData);
+    console.log(nonNullData);
   };
 
   return (

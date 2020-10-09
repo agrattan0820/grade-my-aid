@@ -6,7 +6,7 @@ import AidInput from "./AidInput";
 
 function Home() {
   return (
-    <div>
+    <div className="home">
       <header>
         <h1>checkmyaid</h1>
       </header>

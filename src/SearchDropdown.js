@@ -5,14 +5,15 @@ import { FormContext } from "./FormContext";
 
 function SearchDropdown() {
   const universities = useContext(UniversityContext);
-  const { dropdown } = React.useContext(FormContext);
+  const { dropdown, locate } = React.useContext(FormContext);
   const [search, setSearch] = dropdown;
+  const [location, setLocation] = locate;
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
   const filteredData = universities.filter((university) => {
-    return university.institution.toLowerCase().includes(search.toLowerCase());
-  });
+    return university.INSTNM.toLowerCase().includes(search.toLowerCase());
+  }).splice(0, 50);
 
   const typeSearch = (e) => {
     setSearch(e.target.value);
@@ -38,6 +39,10 @@ function SearchDropdown() {
     }
   };
 
+  const handleRadioClick = (e) => {
+    setLocation(e.target.value);
+  }
+
   return (
     <div className="dropdown" ref={wrapperRef}>
       <input
@@ -52,17 +57,23 @@ function SearchDropdown() {
         <div className="dropdown-schools">
           {filteredData.map((university, index) => (
             <div
-              onClick={() => clickSearch(university.institution)}
+              onClick={() => clickSearch(university.INSTNM)}
               className="option"
               key={index}
               tabIndex="0"
               value={university}
             >
-              <span>{university.institution}</span>
+              <span>{university.INSTNM}</span>
             </div>
           ))}
         </div>
       )}
+        <div className="state-select">
+          <label htmlFor="schoolState">In-state</label>
+          <input type="radio" name="schoolState" id="inState" value="inState" onChange={handleRadioClick}/>
+          <label htmlFor="schoolState">Out-of-state</label>
+          <input type="radio" name="schoolState" id="outState" value="outState" onChange={handleRadioClick}/>
+        </div>
     </div>
   );
 }

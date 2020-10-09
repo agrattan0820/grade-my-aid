@@ -6,9 +6,10 @@ import { FormContext } from "./FormContext";
 
 function ScoreResult() {
   const universities = useContext(UniversityContext);
-  const { aid, dropdown } = React.useContext(FormContext);
+  const { aid, dropdown, locate } = React.useContext(FormContext);
   const [aidValue, setAidValue] = aid;
   const [search, setSearch] = dropdown;
+  const [location, setLocation] = locate;
   const [score, setScore] = useState("");
 
   useEffect(() => {
@@ -18,93 +19,97 @@ function ScoreResult() {
   const computeScore = () => {
     let pointCounter = 0;
     const filteredData = universities.filter((university) => {
-      return university.institution
-        .toLowerCase()
-        .includes(search.toLowerCase());
-    });
+      return university.INSTNM.toLowerCase().includes(search.toLowerCase());
+    }).splice(0, 50);
 
     const filteredSchool = filteredData[0];
 
-    if (aidValue >= 50000) {
+    if (location === "inState") {
+    if (filteredSchool.TUITIONFEE_IN - aidValue < 0) {
       console.log("aid added");
+      pointCounter += 50;
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 1000) {
+      pointCounter += 40;
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 5000) {
+      pointCounter += 35;
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 7500) {
       pointCounter += 30;
-    } else if (aidValue >= 45000) {
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 10000) {
       pointCounter += 25;
-    } else if (aidValue >= 40000) {
-      pointCounter += 20;
-    } else if (aidValue >= 35000) {
-      pointCounter += 18;
-    } else if (aidValue >= 30000) {
-      pointCounter += 16;
-    } else if (aidValue >= 25000) {
-      pointCounter += 14;
-    } else if (aidValue >= 20000) {
-      pointCounter += 12;
-    } else if (aidValue >= 15000) {
-      pointCounter += 10;
-    } else if (aidValue >= 10000) {
-      pointCounter += 8;
-    } else if (aidValue >= 5000) {
-      pointCounter += 6;
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 15000) {
+      pointCounter += 15;
+    } else if (filteredSchool.TUITIONFEE_IN - aidValue < 25000) {
+      pointCounter += 5;
     } else {
       pointCounter += 2;
     }
 
-    if (filteredSchool.national_rank <= 5) {
+    } else if (location === "outState") {
+      if (filteredSchool.TUITIONFEE_OUT - aidValue < 0) {
+      console.log("aid added");
+      pointCounter += 50;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 1000) {
+      pointCounter += 40;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 5000) {
+      pointCounter += 35;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 7500) {
       pointCounter += 30;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 10000) {
+      pointCounter += 25;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 15000) {
+      pointCounter += 15;
+    } else if (filteredSchool.TUITIONFEE_OUT - aidValue < 25000) {
+      pointCounter += 5;
+    } else {
+      pointCounter += 2;
+    }
+    }
+
+
+
+    if (filteredSchool.MD_EARN_WNE_P10 >= 100000) {
+      pointCounter += 50;
       console.log("national added");
-    } else if (filteredSchool.national_rank <= 50) {
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 75000) {
+      pointCounter += 45;
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 60000) {
+      pointCounter += 40;
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 50000) {
+      pointCounter += 30;
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 40000) {
       pointCounter += 25;
-    } else if (filteredSchool.national_rank <= 100) {
-      pointCounter += 20;
-    } else if (filteredSchool.national_rank <= 200) {
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 30000) {
       pointCounter += 15;
-    } else if (filteredSchool.national_rank <= 500) {
-      pointCounter += 5;
-    } else {
-      pointCounter += 2;
+    } else if (filteredSchool.MD_EARN_WNE_P10 >= 20000){
+      pointCounter += 5
     }
 
-    if (filteredSchool.alumni_employment.to <= 5) {
-      pointCounter += 30;
-      console.log("alumni added");
-    } else if (filteredSchool.alumni_employment <= 25) {
-      pointCounter += 25;
-    } else if (filteredSchool.alumni_employment <= 50) {
-      pointCounter += 20;
-    } else if (filteredSchool.alumni_employment <= 100) {
-      pointCounter += 15;
-    } else if (filteredSchool.alumni_employment <= 200) {
-      pointCounter += 10;
-    } else if (filteredSchool.alumni_employment <= 500) {
-      pointCounter += 5;
-    } else {
-      pointCounter += 2;
-    }
 
     if (filteredSchool != null && pointCounter > 0) {
       console.log("Hey student");
       console.log(filteredData);
-      console.log(filteredSchool.institution);
-      console.log(filteredSchool.national_rank);
+      console.log(filteredSchool.INSTNM);
+      console.log(filteredSchool.MD_EARN_WNE_P10);
+      console.log(filteredSchool.TUITIONFEE_IN);
+      console.log(filteredSchool.TUITIONFEE_OUT)
       console.log(pointCounter);
     }
 
-    if (pointCounter >= 80) {
+    if (pointCounter >= 100) {
       setScore("A+");
-    } else if (pointCounter >= 60) {
+    } else if (pointCounter >= 85) {
       setScore("A");
-    } else if (pointCounter >= 45) {
+    } else if (pointCounter >= 75) {
       setScore("A-");
-    } else if (pointCounter >= 35) {
+    } else if (pointCounter >= 60) {
       setScore("B+");
-    } else if (pointCounter >= 25) {
+    } else if (pointCounter >= 50) {
       setScore("B");
-    } else if (pointCounter >= 15) {
+    } else if (pointCounter >= 40) {
       setScore("B-");
-    } else if (pointCounter >= 10) {
+    } else if (pointCounter >= 25) {
       setScore("C+");
-    } else if (pointCounter >= 5) {
+    } else if (pointCounter >= 20) {
       setScore("C");
     } else {
       setScore("C-");
@@ -115,6 +120,7 @@ function ScoreResult() {
     setScore("");
     setAidValue("");
     setSearch("");
+    setLocation("");
   };
 
   return (
