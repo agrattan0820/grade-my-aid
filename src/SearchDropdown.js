@@ -41,6 +41,7 @@ function SearchDropdown() {
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
+    console.log(location);
   }
 
   return (
