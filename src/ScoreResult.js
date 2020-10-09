@@ -11,6 +11,11 @@ function ScoreResult() {
   const [search, setSearch] = dropdown;
   const [location, setLocation] = locate;
   const [score, setScore] = useState("");
+  const filteredData = universities.filter((university) => {
+      return university.INSTNM.toLowerCase().includes(search.toLowerCase());
+    }).splice(0, 50);
+
+  const filteredSchool = filteredData[0];
 
   useEffect(() => {
     computeScore();
@@ -18,11 +23,6 @@ function ScoreResult() {
 
   const computeScore = () => {
     let pointCounter = 0;
-    const filteredData = universities.filter((university) => {
-      return university.INSTNM.toLowerCase().includes(search.toLowerCase());
-    }).splice(0, 50);
-
-    const filteredSchool = filteredData[0];
 
     if (location === "inState") {
     if (filteredSchool.TUITIONFEE_IN - aidValue < 0) {
@@ -131,6 +131,8 @@ function ScoreResult() {
       <div className="score-result-container">
         <span>Grade:</span>
         <div className="grade">{score}</div>
+        <span>Median Ten Year Salary: {filteredSchool.MD_EARN_WNE_P10.toLocaleString()}</span>
+        <span>Tuition: {location === "inState" ? filteredSchool.TUITIONFEE_IN.toLocaleString() : filteredSchool.TUITIONFEE_OUT.toLocaleString()}</span>
         <div>
           <Link to="/">
             <button className="gradient-btn" onClick={handleBack}>
