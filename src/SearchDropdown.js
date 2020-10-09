@@ -5,9 +5,9 @@ import { FormContext } from "./FormContext";
 
 function SearchDropdown() {
   const universities = useContext(UniversityContext);
-  const { dropdown, locate } = React.useContext(FormContext);
+  const { dropdown } = React.useContext(FormContext);
   const [search, setSearch] = dropdown;
-  const [location, setLocation] = locate;
+
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -39,10 +39,7 @@ function SearchDropdown() {
     }
   };
 
-  const handleRadioClick = (e) => {
-    setLocation(e.target.value);
-    console.log(location);
-  }
+
 
   return (
     <div className="dropdown" ref={wrapperRef}>
@@ -69,12 +66,6 @@ function SearchDropdown() {
           ))}
         </div>
       )}
-        <div className="state-select">
-          <label htmlFor="schoolState">In-state</label>
-          <input type="radio" name="schoolState" id="inState" value="inState" onChange={handleRadioClick}/>
-          <label htmlFor="schoolState">Out-of-state</label>
-          <input type="radio" name="schoolState" id="outState" value="outState" onChange={handleRadioClick}/>
-        </div>
     </div>
   );
 }

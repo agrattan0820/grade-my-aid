@@ -1,3 +1,61 @@
+@import "./variables";
+
 .home {
   padding-bottom: 1rem;
+}
+
+.step1-container {
+  position: relative;
+  right: 75px;
+  width: 300px;
+  height: 200px;
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: #7da3e9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  margin: 4rem auto;
+  box-sizing: border-box;
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  p {
+    margin-top: 0.05rem;
+    font-weight: 300;
+  }
+  input {
+    margin: 0;
+  }
+}
+
+.step2-container {
+  @extend .step1-container;
+  left: 75px;
+  align-items: flex-start;
+}
+
+.step3-container {
+  @extend .step1-container;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+}
+
+.state-select {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  label {
+    margin: 0.5rem;
+  }
+  input {
+    width: 10px;
+  }
 }
