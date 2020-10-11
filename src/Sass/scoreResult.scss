@@ -3,14 +3,63 @@
 .grade {
   font-size: 8rem;
   font-weight: 200;
+  @media screen and (min-width: $tabletWidth) {
+    font-size: 15rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.score-page-container {
+  padding-bottom: 2rem;
 }
 
 .score-result-container {
   display: flex;
+  height: 450px;
+  margin: auto;
   justify-content: center;
   flex-direction: center;
   flex-direction: column;
+  @media screen and (min-width: $tabletWidth) {
+    flex-direction: row;
+    justify-content: space-around;
+    height: 650px;
+  }
   button {
     margin: 1rem;
+  }
+
+  span {
+    @media screen and (min-width: $tabletWidth) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.grade-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+
+  span {
+    font-weight: 300;
+  }
+}
+
+.school-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: $tabletWidth) {
+    align-items: flex-start;
+  }
+
+  font-size: 1.2rem;
+  span {
+    margin: 1rem 0;
   }
 }

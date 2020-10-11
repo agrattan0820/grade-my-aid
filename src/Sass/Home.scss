@@ -2,6 +2,10 @@
 
 .home {
   padding-bottom: 1rem;
+  @media screen and (min-width: $tabletWidth) {
+    width: 75%;
+    margin: 0 auto;
+  }
 }
 
 .step1-container {
@@ -21,6 +25,9 @@
   h3 {
     margin: 0;
     font-size: 1.4rem;
+    @media screen and (min-width: $tabletWidth) {
+      font-size: 1.8rem;
+    }
   }
   p {
     margin-top: 0.05rem;
@@ -29,19 +36,52 @@
   input {
     margin: 0;
   }
+  @media screen and (min-width: $tabletWidth) {
+    right: 200px;
+    width: 400px;
+    height: 225px;
+    padding: 4rem;
+  }
+  @media screen and (min-width: $desktopWidth) {
+    align-items: flex-start;
+    right: 300px;
+    margin: 3rem auto;
+  }
 }
 
 .step2-container {
   @extend .step1-container;
   left: 75px;
   align-items: flex-start;
+  @media screen and (min-width: $tabletWidth) {
+    left: 200px;
+  }
+  @media screen and (min-width: $desktopWidth) {
+    left: 0;
+  }
 }
 
 .step3-container {
   @extend .step1-container;
 
+  @media screen and (min-width: $desktopWidth) {
+    align-items: center;
+    left: 300px;
+  }
+
   h3 {
+    @media screen and (min-width: $desktopWidth) {
+      align-self: flex-start;
+    }
     margin-bottom: 1rem;
+  }
+
+  .gradient-btn {
+    @media screen and (min-width: $desktopWidth) {
+      width: 250px;
+      height: 75px;
+      font-size: 1rem;
+    }
   }
 }
 

@@ -15,7 +15,6 @@ function AidInput() {
       <input
         type="number"
         className="aid-input"
-        placeholder="Amount of aid"
         value={aidValue}
         onChange={updateAidValue}
       />

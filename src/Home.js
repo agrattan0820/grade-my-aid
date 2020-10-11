@@ -31,7 +31,7 @@ function Home() {
       </div>
       <div className="step2-container">
         <h3>Step 2:</h3>
-        <p>How much aid did you get?</p>
+        <p>Amount of yearly aid</p>
         <AidInput />
       </div>
       <div className="step3-container">

@@ -45,7 +45,6 @@ function SearchDropdown() {
     <div className="dropdown" ref={wrapperRef}>
       <input
         className="search-bar"
-        placeholder="Search for a school"
         type="text"
         onClick={() => setDisplay(!display)}
         value={search}
