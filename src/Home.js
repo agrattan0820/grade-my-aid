@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 import AidInput from "./AidInput";
@@ -8,10 +8,9 @@ import { Link } from "react-router-dom";
 function Home() {
   const { locate, aid, dropdown } = React.useContext(FormContext);
   const [location, setLocation] = locate;
-  const [aidValue, setAidValue] = aid;
-  const [search, setSearch] = dropdown;
+  const [aidValue] = aid;
+  const [search] = dropdown;
   const [clickable, setClickable] = useState(true);
-  const button = useRef();
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
