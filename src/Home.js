@@ -14,7 +14,6 @@ function Home() {
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
-    console.log(location);
   }
 
   const handleSubmit = (e) => {
