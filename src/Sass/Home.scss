@@ -99,3 +99,12 @@
     width: 10px;
   }
 }
+
+.error {
+  position: absolute;
+  color: #fd402d;
+  font-weight: 700;
+  bottom: 25px;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
