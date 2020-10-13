@@ -13,9 +13,11 @@ function ScoreResult() {
   const [score, setScore] = useState("");
   const [phrase, setPhrase] = useState("");
 
-  const filteredData = universities.filter((university) => {
+  const filteredData = universities
+    .filter((university) => {
       return university.INSTNM.toLowerCase().includes(search.toLowerCase());
-    }).splice(0, 50);
+    })
+    .splice(0, 50);
 
   const filteredSchool = filteredData[0];
 
@@ -31,43 +33,39 @@ function ScoreResult() {
   const computeScore = () => {
     let pointCounter = 0;
 
-
-  if (location === "inState") {
-    if (inStateTution - aidValue < 0) {
-      pointCounter += 80;
-    } else if (inStateTution - aidValue < 1000) {
-      pointCounter += 70;
-    } else if (inStateTution - aidValue < 5000) {
-      pointCounter += 50;
-    } else if (inStateTution - aidValue < 10000) {
-      pointCounter += 40;
-    } else if (inStateTution - aidValue < 15000) {
-      pointCounter += 25;
-    } else if (inStateTution - aidValue < 25000) {
-      pointCounter += 10;
-    } else {
-      pointCounter += 5;
-    }
-
+    if (location === "inState") {
+      if (inStateTution - aidValue < 0) {
+        pointCounter += 80;
+      } else if (inStateTution - aidValue < 1000) {
+        pointCounter += 70;
+      } else if (inStateTution - aidValue < 5000) {
+        pointCounter += 50;
+      } else if (inStateTution - aidValue < 10000) {
+        pointCounter += 40;
+      } else if (inStateTution - aidValue < 15000) {
+        pointCounter += 25;
+      } else if (inStateTution - aidValue < 25000) {
+        pointCounter += 10;
+      } else {
+        pointCounter += 5;
+      }
     } else if (location === "outState") {
       if (outStateTuition - aidValue < 0) {
-      pointCounter += 80;
-    } else if (outStateTuition - aidValue < 1000) {
-      pointCounter += 70;
-    } else if (outStateTuition - aidValue < 5000) {
-      pointCounter += 50;
-    } else if (outStateTuition - aidValue < 10000) {
-      pointCounter += 40;
-    } else if (outStateTuition - aidValue < 15000) {
-      pointCounter += 25;
-    } else if (outStateTuition - aidValue < 25000) {
-      pointCounter += 10;
-    } else {
-      pointCounter += 5;
+        pointCounter += 80;
+      } else if (outStateTuition - aidValue < 1000) {
+        pointCounter += 70;
+      } else if (outStateTuition - aidValue < 5000) {
+        pointCounter += 50;
+      } else if (outStateTuition - aidValue < 10000) {
+        pointCounter += 40;
+      } else if (outStateTuition - aidValue < 15000) {
+        pointCounter += 25;
+      } else if (outStateTuition - aidValue < 25000) {
+        pointCounter += 10;
+      } else {
+        pointCounter += 5;
+      }
     }
-  }
-
-
 
     if (year10outlook >= 100000) {
       pointCounter += 60;
@@ -81,8 +79,8 @@ function ScoreResult() {
       pointCounter += 20;
     } else if (year10outlook >= 30000) {
       pointCounter += 10;
-    } else if (year10outlook >= 20000){
-      pointCounter += 5
+    } else if (year10outlook >= 20000) {
+      pointCounter += 5;
     }
 
     if (pointCounter >= 100) {
@@ -113,14 +111,13 @@ function ScoreResult() {
       setScore("F");
       setPhrase("They're just looking to make you poor");
     }
-
   };
 
   const handleBackButton = () => {
     setAidValue("");
     setLocation("");
     setSearch("");
-  }
+  };
 
   return (
     <div className="score-page-container">
@@ -128,24 +125,31 @@ function ScoreResult() {
         <h1>checkmyaid</h1>
       </header>
       <div className="score-result-container">
-        <div className="grade-container">        
-        <span>Grade:</span>
-        <div className="grade">{score}</div>
-        <span><em>{phrase}</em></span>
+        <div className="grade-container">
+          <span>Grade:</span>
+          <div className="grade">{score}</div>
+          <span>
+            <em>{phrase}</em>
+          </span>
         </div>
         <div className="school-info">
-        <span>{search}</span>
-        <span>Median Ten Year Salary: ${year10outlook.toLocaleString()}</span>
-        <span>Tuition: ${location === "inState" ? inStateTution.toLocaleString() : outStateTuition.toLocaleString()}</span>
+          <span>{search}</span>
+          <span>Median Ten Year Salary: ${year10outlook.toLocaleString()}</span>
+          <span>
+            Tuition: $
+            {location === "inState"
+              ? inStateTution.toLocaleString()
+              : outStateTuition.toLocaleString()}
+          </span>
         </div>
       </div>
-        <div>
-          <Link to="/">
-            <button className="gradient-btn" onClick={handleBackButton}>
-              GO BACK
-            </button>
-          </Link>
-        </div>
+      <div>
+        <Link to="/">
+          <button className="gradient-btn" onClick={handleBackButton}>
+            GO BACK
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ function Home() {
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     if (location === "" || aidValue === "" || search === "") {
@@ -25,7 +25,6 @@ function Home() {
     }
   };
 
-
   return (
     <div className="home">
       <header>
@@ -35,11 +34,23 @@ function Home() {
         <h3>Step 1:</h3>
         <p>Choose a school</p>
         <SearchDropdown />
-          <div className="state-select">
+        <div className="state-select">
           <label htmlFor="schoolState">In-state</label>
-          <input type="radio" name="schoolState" className="state-radio" value="inState" onChange={handleRadioClick}/>
+          <input
+            type="radio"
+            name="schoolState"
+            className="state-radio"
+            value="inState"
+            onChange={handleRadioClick}
+          />
           <label htmlFor="schoolState">Out-of-state</label>
-          <input type="radio" name="schoolState" className="state-radio" value="outState" onChange={handleRadioClick}/>
+          <input
+            type="radio"
+            name="schoolState"
+            className="state-radio"
+            value="outState"
+            onChange={handleRadioClick}
+          />
         </div>
       </div>
       <div className="step2-container">
@@ -54,7 +65,9 @@ function Home() {
             GET YOUR RATING
           </button>
         </Link>
-        <div className="error" style={{opacity: !clickable ? "1" : "0"}}>There was an input error</div>
+        <div className="error" style={{ opacity: !clickable ? "1" : "0" }}>
+          There was an input error
+        </div>
       </div>
     </div>
   );

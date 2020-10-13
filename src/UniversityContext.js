@@ -10,7 +10,7 @@ export const UniversityProvider = (props) => {
 
   useEffect(() => {
     getUniversityData();
-    localStorage.setItem("universities", JSON.stringify(universities))
+    localStorage.setItem("universities", JSON.stringify(universities));
   }, [universities]);
 
   const getUniversityData = async () => {

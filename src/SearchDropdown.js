@@ -11,9 +11,11 @@ function SearchDropdown() {
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
 
-  const filteredData = universities.filter((university) => {
-    return university.INSTNM.toLowerCase().includes(search.toLowerCase());
-  }).splice(0, 50);
+  const filteredData = universities
+    .filter((university) => {
+      return university.INSTNM.toLowerCase().includes(search.toLowerCase());
+    })
+    .splice(0, 50);
 
   const typeSearch = (e) => {
     setSearch(e.target.value);
@@ -38,8 +40,6 @@ function SearchDropdown() {
       setDisplay(false);
     }
   };
-
-
 
   return (
     <div className="dropdown" ref={wrapperRef}>
