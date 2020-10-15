@@ -1,6 +1,7 @@
 @import "./variables";
 
 .dropdown {
+  position: relative;
   z-index: 2;
   .dropdown-schools {
     position: absolute;
@@ -9,6 +10,9 @@
     max-height: 150px;
     overflow-y: scroll;
     box-sizing: border-box;
+    @media screen and (min-width: $tabletWidth) {
+      max-height: 200px;
+    }
 
     .option {
       display: flex;

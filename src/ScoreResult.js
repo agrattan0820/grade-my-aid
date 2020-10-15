@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
+import { motion } from "framer-motion";
 
 function ScoreResult() {
   const universities = useContext(UniversityContext);
@@ -119,35 +120,69 @@ function ScoreResult() {
     setSearch("");
   };
 
+  const schoolContainer = {
+    hidden: { opacity: 0, x: -100 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const schoolItems = {
+    hidden: { opacity: 0, x: -100 },
+    show: { opacity: 1, x: 0 },
+  };
+
   return (
     <div className="score-page-container">
-      <header>
-        <h1>checkmyaid</h1>
-      </header>
       <div className="score-result-container">
         <div className="grade-container">
-          <span>Grade:</span>
-          <div className="grade">{score}</div>
-          <span>
+          <motion.div
+            className="grade"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, type: "spring" }}
+          >
+            {score}
+          </motion.div>
+          <motion.span
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
             <em>{phrase}</em>
-          </span>
+          </motion.span>
         </div>
-        <div className="school-info">
-          <span>{search}</span>
-          <span>Median Ten Year Salary: ${year10outlook.toLocaleString()}</span>
-          <span>
+        <motion.div
+          className="school-info"
+          variants={schoolContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.span variants={schoolItems}>{search}</motion.span>
+          <motion.span variants={schoolItems}>
+            Median Ten Year Salary: ${year10outlook.toLocaleString()}
+          </motion.span>
+          <motion.span variants={schoolItems}>
             Tuition: $
             {location === "inState"
               ? inStateTution.toLocaleString()
               : outStateTuition.toLocaleString()}
-          </span>
-        </div>
+          </motion.span>
+        </motion.div>
       </div>
       <div>
         <Link to="/">
-          <button className="gradient-btn" onClick={handleBackButton}>
+          <motion.button
+            className="gradient-btn"
+            onClick={handleBackButton}
+            whileHover={{ scale: 1.1 }}
+          >
             GO BACK
-          </button>
+          </motion.button>
         </Link>
       </div>
     </div>

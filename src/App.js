@@ -14,6 +14,9 @@ function App() {
       <UniversityProvider>
         <FormProvider>
           <div className="App">
+            <header>
+              <h1>checkmyaid</h1>
+            </header>
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/result" component={ScoreResult} exact />
