@@ -22,10 +22,10 @@ function ScoreResult() {
 
   const filteredSchool = filteredData[0];
 
-  const inStateTution = filteredSchool.TUITIONFEE_IN;
+  const inStateTuition = filteredSchool.TUITIONFEE_IN;
   const outStateTuition = filteredSchool.TUITIONFEE_OUT;
   const year10outlook = filteredSchool.MD_EARN_WNE_P10;
-  
+
   const avgNetPricePublic = filteredSchool.NPT4_PUB;
   const avgNetPricePrivate = filteredSchool.NPT4_PRIV;
 
@@ -38,17 +38,17 @@ function ScoreResult() {
     let pointCounter = 0;
 
     if (location === "inState") {
-      if (inStateTution - aidValue < 0) {
+      if (inStateTuition - aidValue < 0) {
         pointCounter += 80;
-      } else if (inStateTution - aidValue < 1000) {
-        pointCounter += 70;
-      } else if (inStateTution - aidValue < 5000) {
+      } else if (inStateTuition - aidValue < 1000) {
+        pointCounter += 60;
+      } else if (inStateTuition - aidValue < 5000) {
         pointCounter += 50;
-      } else if (inStateTution - aidValue < 10000) {
+      } else if (inStateTuition - aidValue < 10000) {
         pointCounter += 40;
-      } else if (inStateTution - aidValue < 15000) {
-        pointCounter += 25;
-      } else if (inStateTution - aidValue < 25000) {
+      } else if (inStateTuition - aidValue < 15000) {
+        pointCounter += 30;
+      } else if (inStateTuition - aidValue < 25000) {
         pointCounter += 10;
       } else {
         pointCounter += 5;
@@ -57,13 +57,13 @@ function ScoreResult() {
       if (outStateTuition - aidValue < 0) {
         pointCounter += 80;
       } else if (outStateTuition - aidValue < 1000) {
-        pointCounter += 70;
+        pointCounter += 60;
       } else if (outStateTuition - aidValue < 5000) {
         pointCounter += 50;
       } else if (outStateTuition - aidValue < 10000) {
         pointCounter += 40;
       } else if (outStateTuition - aidValue < 15000) {
-        pointCounter += 25;
+        pointCounter += 30;
       } else if (outStateTuition - aidValue < 25000) {
         pointCounter += 10;
       } else {
@@ -72,51 +72,39 @@ function ScoreResult() {
     }
 
     if (year10outlook >= 100000) {
-      pointCounter += 60;
+      pointCounter += 100;
     } else if (year10outlook >= 75000) {
-      pointCounter += 50;
+      pointCounter += 90;
     } else if (year10outlook >= 60000) {
-      pointCounter += 40;
+      pointCounter += 75;
     } else if (year10outlook >= 50000) {
-      pointCounter += 30;
+      pointCounter += 60;
     } else if (year10outlook >= 40000) {
-      pointCounter += 20;
+      pointCounter += 45;
     } else if (year10outlook >= 30000) {
-      pointCounter += 10;
+      pointCounter += 25;
     } else if (year10outlook >= 20000) {
-      pointCounter += 5;
+      pointCounter += 10;
     }
 
-    if (avgNetPricePublic >= 20000) {
+    if (avgNetPricePublic >= 50000) {
+      pointCounter += 5;
+    } else if (avgNetPricePublic >= 35000) {
       pointCounter += 10;
-    }
-    else if (avgNetPricePublic >= 15000) {
-      pointCounter += 20;
-    }
-    else if (avgNetPricePublic >= 10000) {
+    } else if (avgNetPricePublic >= 10000) {
       pointCounter += 30;
-    }
-    else if (avgNetPricePublic >= 5000) {
+    } else if (avgNetPricePublic >= 0) {
       pointCounter += 40;
     }
-    else if (avgNetPricePublic >= 0) {
-      pointCounter += 50;
-    }
-    
-    if (avgNetPricePrivate >= 20000) {
+
+    if (avgNetPricePrivate >= 50000) {
+      pointCounter += 5;
+    } else if (avgNetPricePrivate >= 35000) {
       pointCounter += 10;
-    }
-    else if (avgNetPricePrivate >= 15000) {
-      pointCounter += 20;
-    }
-    else if (avgNetPricePrivate >= 10000) {
+    } else if (avgNetPricePrivate >= 10000) {
       pointCounter += 30;
-    }
-    else if (avgNetPricePrivate >= 5000) {
+    } else if (avgNetPricePrivate >= 0) {
       pointCounter += 40;
-    }
-    else if (avgNetPricePrivate >= 0) {
-      pointCounter += 50;
     }
 
     if (pointCounter >= 150) {
@@ -139,7 +127,7 @@ function ScoreResult() {
       setPhrase("It's alright");
     } else if (pointCounter >= 100) {
       setScore("C+");
-      setPhrase("Any other ones?");
+      setPhrase("Definitely not the best choice");
     } else if (pointCounter >= 90) {
       setScore("C");
       setPhrase("Look elsewhere maybe");
@@ -204,13 +192,22 @@ function ScoreResult() {
             {search}
           </motion.span>
           <motion.span variants={schoolItems}>
-            <span role="img" aria-label="books">
-              📚
+            <span role="img" aria-label="dollar">
+              💵
             </span>
             Tuition: $
-            {location === "inState"
-              ? inStateTution.toLocaleString()
+            {Location === "inState"
+              ? inStateTuition.toLocaleString()
               : outStateTuition.toLocaleString()}
+          </motion.span>
+          <motion.span variants={schoolItems}>
+            <span role="img" aria-label="receipt">
+              🧾
+            </span>
+            Average Net Price: $
+            {avgNetPricePrivate === "NULL"
+              ? avgNetPricePublic.toLocaleString()
+              : avgNetPricePrivate.toLocaleString()}
           </motion.span>
           <motion.span variants={schoolItems}>
             <span role="img" aria-label="money-in-mouth">

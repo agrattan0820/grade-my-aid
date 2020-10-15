@@ -4,14 +4,24 @@
   font-size: 8rem;
   font-weight: 200;
   @media screen and (min-width: $tabletWidth) {
-    font-size: 15rem;
+    font-size: 20rem;
     padding: 0;
     margin: 0;
   }
 }
 
 .score-page-container {
-  padding-bottom: 2rem;
+  padding: 2rem 0;
+  background-color: #7da3e9;
+  border-radius: 20px;
+  width: 90%;
+  margin: auto;
+  @media screen and (min-width: $tabletWidth) {
+    width: 80%;
+  }
+  @media screen and (min-width: $desktopWidth) {
+    width: 75%;
+  }
 }
 
 .score-result-container {
@@ -72,7 +82,7 @@
       padding: 0.2rem;
     }
     @media screen and (min-width: $tabletWidth) {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin: 1rem 0;
       padding: 0.5rem;
     }
