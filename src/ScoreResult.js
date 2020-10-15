@@ -121,7 +121,7 @@ function ScoreResult() {
   };
 
   const schoolContainer = {
-    hidden: { opacity: 0, x: -100 },
+    hidden: { opacity: 0, x: -200 },
     show: {
       opacity: 1,
       x: 0,
@@ -132,7 +132,7 @@ function ScoreResult() {
   };
 
   const schoolItems = {
-    hidden: { opacity: 0, x: -100 },
+    hidden: { opacity: 0, x: -200 },
     show: { opacity: 1, x: 0 },
   };
 
@@ -162,15 +162,26 @@ function ScoreResult() {
           initial="hidden"
           animate="show"
         >
-          <motion.span variants={schoolItems}>{search}</motion.span>
           <motion.span variants={schoolItems}>
-            Median Ten Year Salary: ${year10outlook.toLocaleString()}
+            <span role="img" aria-label="school">
+              🏫
+            </span>
+            {search}
           </motion.span>
           <motion.span variants={schoolItems}>
+            <span role="img" aria-label="school">
+              📚
+            </span>
             Tuition: $
             {location === "inState"
               ? inStateTution.toLocaleString()
               : outStateTuition.toLocaleString()}
+          </motion.span>
+          <motion.span variants={schoolItems}>
+            <span role="img" aria-label="school">
+              🤑
+            </span>
+            Median Ten Year Salary: ${year10outlook.toLocaleString()}
           </motion.span>
         </motion.div>
       </div>
