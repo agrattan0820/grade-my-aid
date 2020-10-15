@@ -14,7 +14,7 @@ export const UniversityProvider = (props) => {
   }, [universities]);
 
   const getUniversityData = async () => {
-    const response = await fetch("./DE_Colleges_NewData.json");
+    const response = await fetch("./DE_Colleges.json");
     const data = await response.json();
     const nonNullData = await data.filter(
       (school) =>
