@@ -169,7 +169,7 @@ function ScoreResult() {
             {search}
           </motion.span>
           <motion.span variants={schoolItems}>
-            <span role="img" aria-label="school">
+            <span role="img" aria-label="books">
               📚
             </span>
             Tuition: $
@@ -178,7 +178,7 @@ function ScoreResult() {
               : outStateTuition.toLocaleString()}
           </motion.span>
           <motion.span variants={schoolItems}>
-            <span role="img" aria-label="school">
+            <span role="img" aria-label="money-in-mouth">
               🤑
             </span>
             Median Ten Year Salary: ${year10outlook.toLocaleString()}
