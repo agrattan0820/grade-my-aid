@@ -24,6 +24,9 @@ function ScoreResult() {
   const inStateTution = filteredSchool.TUITIONFEE_IN;
   const outStateTuition = filteredSchool.TUITIONFEE_OUT;
   const year10outlook = filteredSchool.MD_EARN_WNE_P10;
+  
+  const avgNetPricePublic = filteredSchool.NPT4_PUB;
+  const avgNetPricePrivate = filteredSchool.NPT4_PRIV;
 
   useEffect(() => {
     computeScore();
@@ -83,28 +86,60 @@ function ScoreResult() {
       pointCounter += 5;
     }
 
-    if (pointCounter >= 100) {
+    if (avgNetPricePublic >= 20000) {
+      pointCounter += 10;
+    }
+    else if (avgNetPricePublic >= 15000) {
+      pointCounter += 20;
+    }
+    else if (avgNetPricePublic >= 10000) {
+      pointCounter += 30;
+    }
+    else if (avgNetPricePublic >= 5000) {
+      pointCounter += 40;
+    }
+    else if (avgNetPricePublic >= 0) {
+      pointCounter += 50;
+    }
+    
+    if (avgNetPricePrivate >= 20000) {
+      pointCounter += 10;
+    }
+    else if (avgNetPricePrivate >= 15000) {
+      pointCounter += 20;
+    }
+    else if (avgNetPricePrivate >= 10000) {
+      pointCounter += 30;
+    }
+    else if (avgNetPricePrivate >= 5000) {
+      pointCounter += 40;
+    }
+    else if (avgNetPricePrivate >= 0) {
+      pointCounter += 50;
+    }
+
+    if (pointCounter >= 150) {
       setScore("A+");
       setPhrase("The gold standard of options");
-    } else if (pointCounter >= 85) {
+    } else if (pointCounter >= 135) {
       setScore("A");
       setPhrase("The financial aid office loves you");
-    } else if (pointCounter >= 80) {
+    } else if (pointCounter >= 130) {
       setScore("A-");
       setPhrase("A solid option with great results");
-    } else if (pointCounter >= 70) {
+    } else if (pointCounter >= 120) {
       setScore("B+");
       setPhrase("Pretty good but could be better");
-    } else if (pointCounter >= 65) {
+    } else if (pointCounter >= 115) {
       setScore("B");
       setPhrase("Average isn't necessairly a bad thing");
-    } else if (pointCounter >= 60) {
+    } else if (pointCounter >= 110) {
       setScore("B-");
       setPhrase("It's alright");
-    } else if (pointCounter >= 50) {
+    } else if (pointCounter >= 100) {
       setScore("C+");
       setPhrase("Any other ones?");
-    } else if (pointCounter >= 40) {
+    } else if (pointCounter >= 90) {
       setScore("C");
       setPhrase("Look elsewhere maybe");
     } else {
