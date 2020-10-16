@@ -67,10 +67,10 @@
   padding: 1.8rem;
   @media screen and (max-width: $phoneWidth) {
     padding: 0;
-    align-items: center;
   }
   @media screen and (min-width: $tabletWidth) {
     padding: 0;
+    align-items: flex-start;
   }
 
   span {
