@@ -29,6 +29,8 @@ function ScoreResult() {
   const avgNetPricePublic = filteredSchool.NPT4_PUB;
   const avgNetPricePrivate = filteredSchool.NPT4_PRIV;
 
+  const schoolLink = filteredSchool.INSTURL;
+
   useEffect(() => {
     computeScore();
     // eslint-disable-next-line
@@ -161,7 +163,7 @@ function ScoreResult() {
 
   const containerVariants = {
     hidden: {
-      x: "150vw",
+      x: "115vw",
     },
     visible: {
       x: 0,
@@ -173,7 +175,7 @@ function ScoreResult() {
       },
     },
     exit: {
-      x: "150vw",
+      x: "115vw",
       transition: {
         duration: 0.8,
         type: "spring",
@@ -244,6 +246,18 @@ function ScoreResult() {
             </span>
             Median Ten Year Salary: ${year10outlook.toLocaleString()}
           </motion.span>
+          <motion.div variants={schoolItems}>
+            <a href={schoolLink} target="_blank" rel="noopener noreferrer">
+              <button className="school-link-btn">SCHOOL WEBSITE</button>
+            </a>
+            <a
+              href="https://collegescorecard.ed.gov/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="school-link-btn">SOURCE OF DATA</button>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
       <div>

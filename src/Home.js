@@ -37,7 +37,7 @@ function Home() {
 
   const containerVariants = {
     hidden: {
-      x: "-150w",
+      x: "-115w",
     },
     visible: {
       x: 0,
@@ -49,7 +49,7 @@ function Home() {
       },
     },
     exit: {
-      x: "-150vw",
+      x: "-115vw",
       transition: {
         duration: 0.8,
         type: "spring",
@@ -80,22 +80,26 @@ function Home() {
         <p>Choose a school</p>
         <SearchDropdown />
         <div className="state-select">
-          <label htmlFor="schoolState">In-state</label>
+          <label htmlFor="inState">In-state</label>
           <input
             type="radio"
+            id="inState"
             name="schoolState"
             className="state-radio"
             value="inState"
             onChange={handleRadioClick}
           />
-          <label htmlFor="schoolState">Out-of-state</label>
+          <span className="radio-control"></span>
+          <label htmlFor="outState">Out-of-state</label>
           <input
             type="radio"
+            id="outState"
             name="schoolState"
             className="state-radio"
             value="outState"
             onChange={handleRadioClick}
           />
+          <span className="radio-control"></span>
         </div>
       </motion.div>
       <motion.div

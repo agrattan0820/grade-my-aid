@@ -95,10 +95,37 @@
   align-items: center;
   box-sizing: border-box;
   label {
-    margin: 0.5rem;
+    margin: 0 0.2rem;
+    line-height: 1;
   }
-  input {
-    width: 10px;
+  .state-radio {
+    width: 0;
+    z-index: 2;
+    opacity: 0;
+    &:checked + .radio-control::after {
+      transform: scale(1);
+    }
+  }
+  .radio-control {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.1rem solid #ff6f61;
+    padding: 2px;
+    margin: 0 2px;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #ff6f61;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: all 0.3s ease-in-out;
+    }
   }
 }
 

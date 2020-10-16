@@ -87,4 +87,22 @@
       padding: 0.5rem;
     }
   }
+
+  .school-link-btn {
+    outline: none;
+    border: 3px solid #fd402d;
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: transparent;
+    color: #fd402d;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background: #fd402d;
+      color: white;
+    }
+  }
 }
