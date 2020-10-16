@@ -151,6 +151,7 @@ function ScoreResult() {
       opacity: 1,
       x: 0,
       transition: {
+        delay: 0.4,
         staggerChildren: 0.2,
       },
     },
@@ -171,7 +172,6 @@ function ScoreResult() {
         duration: 0.8,
         type: "spring",
         stiffness: 100,
-        when: "beforeChildren",
       },
     },
     exit: {
@@ -182,6 +182,20 @@ function ScoreResult() {
         stiffness: 100,
       },
     },
+  };
+
+  const gradeAnimation = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { delay: 1 },
+    },
+  };
+
+  const messageAnimation = {
+    hidden: { opacity: 0, y: 200 },
+    visible: { opacity: 1, y: 0, transition: { delay: 1.2 } },
   };
 
   return (
@@ -196,16 +210,16 @@ function ScoreResult() {
         <div className="grade-container">
           <motion.div
             className="grade"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, type: "spring" }}
+            variants={gradeAnimation}
+            initial="hidden"
+            animate="visible"
           >
             {score}
           </motion.div>
           <motion.span
-            initial={{ opacity: 0, y: 200 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
+            variants={messageAnimation}
+            initial="hidden"
+            animate="visible"
           >
             <em>{phrase}</em>
           </motion.span>

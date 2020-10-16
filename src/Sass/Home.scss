@@ -95,27 +95,28 @@
   align-items: center;
   box-sizing: border-box;
   label {
-    margin: 0 0.2rem;
     line-height: 1;
   }
   .state-radio {
-    width: 0;
-    z-index: 2;
-    opacity: 0;
+    display: none;
     &:checked + .radio-control::after {
       transform: scale(1);
     }
   }
   .radio-control {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 1rem;
-    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0 0.3rem;
     border-radius: 50%;
     border: 0.1rem solid #ff6f61;
     padding: 2px;
-    margin: 0 2px;
+    @media screen and (min-width: $tabletWidth) {
+      width: 1rem;
+      height: 1rem;
+    }
     &::after {
       content: "";
       width: 100%;
