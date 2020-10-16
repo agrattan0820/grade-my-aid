@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 import AidInput from "./AidInput";
+import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function Home() {
+  const universities = useContext(UniversityContext);
   const { locate, aid, dropdown } = React.useContext(FormContext);
   const [location, setLocation] = locate;
   const [aidValue] = aid;
@@ -24,10 +26,46 @@ function Home() {
     } else {
       setClickable(true);
     }
+
+    if (!universities.find((university) => university.INSTNM === search)) {
+      e.preventDefault();
+      setClickable(false);
+    } else {
+      setClickable(true);
+    }
+  };
+
+  const containerVariants = {
+    hidden: {
+      x: "-100w",
+    },
+    visible: {
+      x: 0,
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        when: "beforeChildren",
+      },
+    },
+    exit: {
+      x: "-100vw",
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
   };
 
   return (
-    <div className="home">
+    <motion.div
+      className="home"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <motion.div
         className="step1-container"
         initial={{ x: "-100vw", opacity: 0 }}
@@ -100,12 +138,15 @@ function Home() {
             className="error"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+            }}
           >
             There was an input error
           </motion.div>
         )}
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 

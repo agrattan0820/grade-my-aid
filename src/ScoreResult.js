@@ -159,8 +159,37 @@ function ScoreResult() {
     show: { opacity: 1, x: 0 },
   };
 
+  const containerVariants = {
+    hidden: {
+      x: "100vw",
+    },
+    visible: {
+      x: 0,
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        when: "beforeChildren",
+      },
+    },
+    exit: {
+      x: "100vw",
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <div className="score-page-container">
+    <motion.div
+      className="score-page-container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="score-result-container">
         <div className="grade-container">
           <motion.div
@@ -228,7 +257,7 @@ function ScoreResult() {
           </motion.button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
