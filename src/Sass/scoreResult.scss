@@ -26,7 +26,7 @@
 
 .score-result-container {
   display: flex;
-  height: 500px;
+  height: 100%;
   margin: auto;
   justify-content: center;
   flex-direction: center;
@@ -63,7 +63,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 1.8rem;
   @media screen and (max-width: $phoneWidth) {
     padding: 0;
@@ -92,10 +92,10 @@
     outline: none;
     border: 3px solid #fd402d;
     border-radius: 15px;
-    width: 200px;
+    width: 100px;
     height: 50px;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background: transparent;
     color: #fd402d;
     transition: all 0.3s ease-in-out;
@@ -103,6 +103,10 @@
     &:hover {
       background: #fd402d;
       color: white;
+    }
+    @media screen and (min-width: $tabletWidth) {
+      font-size: 0.9rem;
+      width: 200px;
     }
   }
 }
