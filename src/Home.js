@@ -37,7 +37,7 @@ function Home() {
 
   const containerVariants = {
     hidden: {
-      x: "-100w",
+      x: "-150w",
     },
     visible: {
       x: 0,
@@ -49,7 +49,7 @@ function Home() {
       },
     },
     exit: {
-      x: "-100vw",
+      x: "-150vw",
       transition: {
         duration: 0.8,
         type: "spring",

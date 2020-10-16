@@ -161,7 +161,7 @@ function ScoreResult() {
 
   const containerVariants = {
     hidden: {
-      x: "100vw",
+      x: "150vw",
     },
     visible: {
       x: 0,
@@ -173,7 +173,7 @@ function ScoreResult() {
       },
     },
     exit: {
-      x: "100vw",
+      x: "150vw",
       transition: {
         duration: 0.8,
         type: "spring",
