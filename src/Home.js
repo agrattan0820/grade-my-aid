@@ -133,6 +133,7 @@ function Home() {
             className="gradient-btn"
             onClick={handleSubmit}
             whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             GET YOUR RATING
           </motion.button>

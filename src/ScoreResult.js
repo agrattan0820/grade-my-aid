@@ -261,7 +261,11 @@ function ScoreResult() {
             Median Ten Year Salary: ${year10outlook.toLocaleString()}
           </motion.span>
           <motion.div variants={schoolItems}>
-            <a href={schoolLink} target="_blank" rel="noopener noreferrer">
+            <a
+              href={`https://${schoolLink}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="school-link-btn">SCHOOL WEBSITE</button>
             </a>
             <a
@@ -280,6 +284,7 @@ function ScoreResult() {
             className="gradient-btn"
             onClick={handleBackButton}
             whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             GO BACK
           </motion.button>
