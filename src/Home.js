@@ -89,7 +89,7 @@ function Home() {
             value="inState"
             onChange={handleRadioClick}
           />
-          <span className="radio-control"></span>
+          <span className="radio-control-in"></span>
           <label htmlFor="outState">Out-of-state</label>
           <input
             type="radio"
@@ -99,7 +99,7 @@ function Home() {
             value="outState"
             onChange={handleRadioClick}
           />
-          <span className="radio-control"></span>
+          <span className="radio-control-out"></span>
         </div>
       </motion.div>
       <motion.div
