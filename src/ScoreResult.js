@@ -31,6 +31,9 @@ function ScoreResult() {
 
   const schoolLink = filteredSchool.INSTURL;
 
+  const medianDebtStudentsCompleted= filteredSchool.GRAD_DEBT_MDN;
+  const medianDebtStudentsNotCompleted = filteredSchool.WDRAW_DEBT_MDN;
+
   useEffect(() => {
     computeScore();
     // eslint-disable-next-line
@@ -109,30 +112,75 @@ function ScoreResult() {
       pointCounter += 40;
     }
 
-    if (pointCounter >= 150) {
+    if (medianDebtStudentsCompleted >=30000) {
+      pointCounter += 10;
+    } else if (medianDebtStudentsCompleted >= 25000) {
+      pointCounter += 20;
+    } else if (medianDebtStudentsCompleted >= 20000) {
+      pointCounter += 30;
+    } else if (medianDebtStudentsCompleted >= 15000) {
+      pointCounter += 40;
+    } else if (medianDebtStudentsCompleted >= 10000) {
+      pointCounter += 50;
+    } else if (medianDebtStudentsCompleted >= 5000) {
+      pointCounter += 60;
+    } else if (medianDebtStudentsCompleted >= 0) {
+      pointCounter += 70;
+    }
+
+
+    if (medianDebtStudentsNotCompleted >=30000) {
+      pointCounter += 10;
+    } else if (medianDebtStudentsNotCompleted >= 25000) {
+      pointCounter += 20;
+    } else if (medianDebtStudentsNotCompleted >= 20000) {
+      pointCounter += 30;
+    } else if (medianDebtStudentsNotCompleted >= 15000) {
+      pointCounter += 40;
+    } else if (medianDebtStudentsNotCompleted >= 10000) {
+      pointCounter += 50;
+    } else if (medianDebtStudentsNotCompleted >= 5000) {
+      pointCounter += 60;
+    } else if (medianDebtStudentsNotCompleted >= 0) {
+      pointCounter += 70;
+    }
+
+    if (pointCounter >= 175) {
       setScore("A+");
       setPhrase("The gold standard of options");
-    } else if (pointCounter >= 135) {
+    } else if (pointCounter >= 160) {
       setScore("A");
       setPhrase("The financial aid office loves you");
-    } else if (pointCounter >= 130) {
+    } else if (pointCounter >= 145) {
       setScore("A-");
       setPhrase("A solid option with great results");
-    } else if (pointCounter >= 120) {
+    } else if (pointCounter >= 145) {
       setScore("B+");
       setPhrase("Pretty good but could be better");
-    } else if (pointCounter >= 115) {
+    } else if (pointCounter >= 130) {
       setScore("B");
       setPhrase("Average isn't necessairly a bad thing");
-    } else if (pointCounter >= 110) {
+    } else if (pointCounter >= 125) {
       setScore("B-");
       setPhrase("It's alright");
-    } else if (pointCounter >= 100) {
+    } else if (pointCounter >= 110) {
       setScore("C+");
       setPhrase("Definitely not the best choice");
-    } else if (pointCounter >= 90) {
+    } else if (pointCounter >= 95) {
       setScore("C");
       setPhrase("Look elsewhere maybe");
+    } else if (pointCounter >= 80) {
+      setScore("C-");
+      setPhrase("Look elsewhere maybe");
+    } else if (pointCounter >= 65) {
+      setScore("D+");
+      setPhrase("Really consider looking elsewhere");
+    } else if (pointCounter >= 50) {
+      setScore("D");
+      setPhrase("Really consider looking elsewhere");
+    } else if (pointCounter >= 35) {
+      setScore("D-");
+      setPhrase("Really consider looking elsewhere");
     } else {
       setScore("F");
       setPhrase("They're just looking to make you poor");
