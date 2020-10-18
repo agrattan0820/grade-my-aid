@@ -14,14 +14,16 @@ export const UniversityProvider = (props) => {
   }, [universities]);
 
   const getUniversityData = async () => {
-    const response = await fetch("./DE_Colleges.json");
+    const response = await fetch("./DE_Colleges_New.json");
     const data = await response.json();
     const nonNullData = await data.filter(
       (school) =>
         school.MD_EARN_WNE_P10 !== "NULL" &&
         school.INSTURL !== "NULL" &&
         school.TUITIONFEE_IN !== "NULL" &&
-        school.TUITIONFEE_OUT !== "NULL"
+        school.TUITIONFEE_OUT !== "NULL" &&
+        school.GRAD_DEBT_MDN !== "NULL" &&
+        school.WDRAW_DEBT_MDN !== "NULL"
     );
     setUniversities(nonNullData);
   };

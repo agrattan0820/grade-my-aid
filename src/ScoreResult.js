@@ -31,11 +31,13 @@ function ScoreResult() {
 
   const schoolLink = filteredSchool.INSTURL;
 
-  const medianDebtStudentsCompleted= filteredSchool.GRAD_DEBT_MDN;
+  const medianDebtStudentsCompleted = filteredSchool.GRAD_DEBT_MDN;
   const medianDebtStudentsNotCompleted = filteredSchool.WDRAW_DEBT_MDN;
 
   useEffect(() => {
     computeScore();
+    console.log(medianDebtStudentsCompleted);
+    console.log(medianDebtStudentsNotCompleted);
     // eslint-disable-next-line
   }, []);
 
@@ -55,8 +57,12 @@ function ScoreResult() {
         pointCounter += 30;
       } else if (inStateTuition - aidValue < 25000) {
         pointCounter += 10;
+      } else if (inStateTuition - aidValue < 35000) {
+        pointCounter += -5;
+      } else if (inStateTuition - aidValue < 50000) {
+        pointCounter += -15;
       } else {
-        pointCounter += 5;
+        pointCounter += -20;
       }
     } else if (location === "outState") {
       if (outStateTuition - aidValue < 0) {
@@ -71,16 +77,18 @@ function ScoreResult() {
         pointCounter += 30;
       } else if (outStateTuition - aidValue < 25000) {
         pointCounter += 10;
+      } else if (outStateTuition - aidValue < 35000) {
+        pointCounter += -5;
+      } else if (outStateTuition - aidValue < 50000) {
+        pointCounter += -15;
       } else {
-        pointCounter += 5;
+        pointCounter += -20;
       }
     }
 
     if (year10outlook >= 100000) {
       pointCounter += 100;
     } else if (year10outlook >= 75000) {
-      pointCounter += 90;
-    } else if (year10outlook >= 60000) {
       pointCounter += 75;
     } else if (year10outlook >= 50000) {
       pointCounter += 60;
@@ -112,46 +120,39 @@ function ScoreResult() {
       pointCounter += 40;
     }
 
-    if (medianDebtStudentsCompleted >=30000) {
-      pointCounter += 10;
+    if (medianDebtStudentsCompleted >= 30000) {
+      pointCounter += 0;
     } else if (medianDebtStudentsCompleted >= 25000) {
-      pointCounter += 20;
+      pointCounter += 5;
     } else if (medianDebtStudentsCompleted >= 20000) {
-      pointCounter += 30;
-    } else if (medianDebtStudentsCompleted >= 15000) {
-      pointCounter += 40;
-    } else if (medianDebtStudentsCompleted >= 10000) {
-      pointCounter += 50;
-    } else if (medianDebtStudentsCompleted >= 5000) {
-      pointCounter += 60;
-    } else if (medianDebtStudentsCompleted >= 0) {
-      pointCounter += 70;
-    }
-
-
-    if (medianDebtStudentsNotCompleted >=30000) {
       pointCounter += 10;
-    } else if (medianDebtStudentsNotCompleted >= 25000) {
+    } else if (medianDebtStudentsCompleted >= 15000) {
       pointCounter += 20;
-    } else if (medianDebtStudentsNotCompleted >= 20000) {
+    } else if (medianDebtStudentsCompleted >= 10000) {
       pointCounter += 30;
-    } else if (medianDebtStudentsNotCompleted >= 15000) {
+    } else if (medianDebtStudentsCompleted >= 5000) {
       pointCounter += 40;
-    } else if (medianDebtStudentsNotCompleted >= 10000) {
+    } else if (medianDebtStudentsCompleted >= 0) {
       pointCounter += 50;
-    } else if (medianDebtStudentsNotCompleted >= 5000) {
-      pointCounter += 60;
-    } else if (medianDebtStudentsNotCompleted >= 0) {
-      pointCounter += 70;
     }
 
-    if (pointCounter >= 175) {
+    if (medianDebtStudentsNotCompleted >= 15000) {
+      pointCounter += 0;
+    } else if (medianDebtStudentsNotCompleted >= 10000) {
+      pointCounter += 5;
+    } else if (medianDebtStudentsNotCompleted >= 5000) {
+      pointCounter += 10;
+    } else if (medianDebtStudentsNotCompleted >= 0) {
+      pointCounter += 20;
+    }
+
+    if (pointCounter >= 190) {
       setScore("A+");
       setPhrase("The gold standard of options");
-    } else if (pointCounter >= 160) {
+    } else if (pointCounter >= 175) {
       setScore("A");
       setPhrase("The financial aid office loves you");
-    } else if (pointCounter >= 145) {
+    } else if (pointCounter >= 160) {
       setScore("A-");
       setPhrase("A solid option with great results");
     } else if (pointCounter >= 145) {
@@ -173,17 +174,11 @@ function ScoreResult() {
       setScore("C-");
       setPhrase("Look elsewhere maybe");
     } else if (pointCounter >= 65) {
-      setScore("D+");
-      setPhrase("Really consider looking elsewhere");
-    } else if (pointCounter >= 50) {
       setScore("D");
-      setPhrase("Really consider looking elsewhere");
-    } else if (pointCounter >= 35) {
-      setScore("D-");
-      setPhrase("Really consider looking elsewhere");
+      setPhrase("Could be a good school but the money is not there");
     } else {
       setScore("F");
-      setPhrase("They're just looking to make you poor");
+      setPhrase("They're just trying to make you poor");
     }
   };
 
@@ -269,7 +264,7 @@ function ScoreResult() {
             initial="hidden"
             animate="visible"
           >
-            <em>{phrase}</em>
+            <em>"{phrase}"</em>
           </motion.span>
         </div>
         <motion.div
