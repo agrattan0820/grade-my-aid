@@ -66,91 +66,97 @@ function Home() {
       animate="visible"
       exit="exit"
     >
-      <motion.div
-        className="step1-container"
-        initial={{ x: "-100vw", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{
-          delay: 0.2,
-          duration: 0.5,
-          type: "spring",
-        }}
-      >
-        <h3>Step 1:</h3>
-        <p>Choose a school</p>
-        <SearchDropdown />
-        <div className="state-select">
-          <label htmlFor="inState">In-state</label>
-          <input
-            type="radio"
-            id="inState"
-            name="schoolState"
-            className="state-radio"
-            value="inState"
-            onChange={handleRadioClick}
-          />
-          <span className="radio-control-in"></span>
-          <label htmlFor="outState">Out-of-state</label>
-          <input
-            type="radio"
-            id="outState"
-            name="schoolState"
-            className="state-radio"
-            value="outState"
-            onChange={handleRadioClick}
-          />
-          <span className="radio-control-out"></span>
-        </div>
-      </motion.div>
-      <motion.div
-        className="step2-container"
-        initial={{ x: "100vw", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{
-          delay: 0.5,
-          duration: 0.5,
-          type: "spring",
-        }}
-      >
-        <h3>Step 2:</h3>
-        <p>Amount of yearly aid</p>
-        <AidInput />
-      </motion.div>
-      <motion.div
-        className="step3-container"
-        initial={{ y: "100vh", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          delay: 0.8,
-          duration: 0.5,
-          type: "spring",
-        }}
-      >
-        <h3>Step 3:</h3>
-        <Link to="/result">
-          <motion.button
-            type="submit"
-            className="gradient-btn"
-            onClick={handleSubmit}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            GET YOUR RATING
-          </motion.button>
-        </Link>
-        {!clickable && (
-          <motion.div
-            className="error"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{
-              type: "spring",
-            }}
-          >
-            There was an input error
-          </motion.div>
-        )}
-      </motion.div>
+      <div className="headline-container">
+        <div className="circle1"></div>
+        <h1>Grade your financial aid package</h1>
+      </div>
+      <div>
+        <motion.div
+          className="step1-container"
+          initial={{ x: "-100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.5,
+            type: "spring",
+          }}
+        >
+          <h3>Step 1:</h3>
+          <p>Choose a school</p>
+          <SearchDropdown />
+          <div className="state-select">
+            <label htmlFor="inState">In-state</label>
+            <input
+              type="radio"
+              id="inState"
+              name="schoolState"
+              className="state-radio"
+              value="inState"
+              onChange={handleRadioClick}
+            />
+            <span className="radio-control-in"></span>
+            <label htmlFor="outState">Out-of-state</label>
+            <input
+              type="radio"
+              id="outState"
+              name="schoolState"
+              className="state-radio"
+              value="outState"
+              onChange={handleRadioClick}
+            />
+            <span className="radio-control-out"></span>
+          </div>
+        </motion.div>
+        <motion.div
+          className="step2-container"
+          initial={{ x: "100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.5,
+            duration: 0.5,
+            type: "spring",
+          }}
+        >
+          <h3>Step 2:</h3>
+          <p>Amount of yearly aid</p>
+          <AidInput />
+        </motion.div>
+        <motion.div
+          className="step3-container"
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.8,
+            duration: 0.5,
+            type: "spring",
+          }}
+        >
+          <h3>Step 3:</h3>
+          <Link to="/result">
+            <motion.button
+              type="submit"
+              className="gradient-btn"
+              onClick={handleSubmit}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              GET YOUR RATING
+            </motion.button>
+          </Link>
+          {!clickable && (
+            <motion.div
+              className="error"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+              }}
+            >
+              There was an input error
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

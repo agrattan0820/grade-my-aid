@@ -23,6 +23,23 @@ function App() {
               <Route path="/result" component={ScoreResult} exact />
             </Switch>
           </AnimatePresence>
+          <footer>
+            <div className="circle2"></div>
+            <a
+              href="https://collegescorecard.ed.gov/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source of Data
+            </a>
+            <a
+              href="https://github.com/GameDog9988/check-my-aid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
+          </footer>
         </div>
       </FormProvider>
     </UniversityProvider>

@@ -1,10 +1,78 @@
 @import "./variables";
 
 .home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
   padding-bottom: 1rem;
+  .headline-container {
+    position: relative;
+    text-align: left;
+    padding: 0 1.5rem;
+    .circle1 {
+      position: absolute;
+      left: 5px;
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      background-color: #7da3e9;
+    }
+    .circle2 {
+      @extend .circle1;
+      left: 300px;
+      top: 900px;
+      width: 150px;
+      height: 150px;
+    }
+    h1 {
+      position: relative;
+    }
+  }
   @media screen and (min-width: $tabletWidth) {
     width: 75%;
     margin: 0 auto;
+    flex-direction: row;
+    .headline-container {
+      padding: 2rem;
+      font-size: 3rem;
+      .circle1 {
+        top: -200px;
+        left: -300px;
+        width: 500px;
+        height: 500px;
+      }
+      .circle2 {
+        left: 800px;
+        top: 800px;
+        width: 200px;
+        height: 200px;
+      }
+      h1 {
+        position: relative;
+      }
+    }
+  }
+  @media screen and (min-width: $desktopWidth) {
+    .headline-container {
+      font-size: 4rem;
+      padding: 1rem;
+      .circle1 {
+        top: -200px;
+        left: -300px;
+        width: 800px;
+        height: 800px;
+      }
+      .circle2 {
+        left: 600px;
+        top: 800px;
+        width: 300px;
+        height: 300px;
+      }
+      h1 {
+        position: relative;
+      }
+    }
   }
 }
 
@@ -38,14 +106,14 @@
     margin: 0;
   }
   @media screen and (min-width: $tabletWidth) {
-    right: 200px;
+    align-items: flex-start;
+    right: 100px;
     width: 400px;
     height: 225px;
     padding: 4rem;
   }
   @media screen and (min-width: $desktopWidth) {
-    align-items: flex-start;
-    right: 300px;
+    right: 100px;
     margin: 3rem auto;
   }
 }
@@ -56,9 +124,6 @@
   align-items: flex-start;
   z-index: 1;
   @media screen and (min-width: $tabletWidth) {
-    left: 200px;
-  }
-  @media screen and (min-width: $desktopWidth) {
     left: 0;
   }
 }
@@ -66,9 +131,9 @@
 .step3-container {
   @extend .step1-container;
 
-  @media screen and (min-width: $desktopWidth) {
+  @media screen and (min-width: $tabletWidth) {
     align-items: center;
-    left: 300px;
+    left: 100px;
   }
 
   h3 {

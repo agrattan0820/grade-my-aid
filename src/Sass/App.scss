@@ -8,15 +8,48 @@
   margin: auto;
   font-family: $mainFont;
   color: white;
-  overflow-x: hidden;
-  padding-bottom: 2rem;
+  overflow: hidden;
 }
 
 header {
   h1 {
+    position: relative;
+    z-index: 1;
     font-family: $mainFont;
     font-weight: 300;
     color: whitesmoke;
+  }
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  height: 100px;
+  a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+  }
+  .circle2 {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #7da3e9;
+  }
+  @media screen and (min-width: $tabletWidth) {
+    width: 50%;
+    .circle2 {
+      right: 0px;
+      top: -50px;
+      width: 400px;
+      height: 400px;
+    }
   }
 }
 
