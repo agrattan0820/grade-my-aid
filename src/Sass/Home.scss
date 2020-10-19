@@ -1,11 +1,10 @@
 @import "./variables";
 
-.home {
+.home-main {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 1rem;
   .headline-container {
     position: relative;
     text-align: left;
@@ -217,4 +216,36 @@
   color: #fd402d;
   font-weight: 700;
   bottom: 25px;
+}
+
+.home-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  height: 100px;
+  a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+  }
+  .circle2 {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #7da3e9;
+  }
+  @media screen and (min-width: $tabletWidth) {
+    width: 50%;
+    .circle2 {
+      right: 0px;
+      top: -50px;
+      width: 400px;
+      height: 400px;
+    }
+  }
 }

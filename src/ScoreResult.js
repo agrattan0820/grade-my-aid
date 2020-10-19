@@ -249,90 +249,108 @@ function ScoreResult() {
       animate="visible"
       exit="exit"
     >
-      <div className="score-result-container">
-        <div className="grade-container">
+      <div className="score-main">
+        <div className="score-result-container">
+          <div className="grade-container">
+            <motion.div
+              className="grade"
+              variants={gradeAnimation}
+              initial="hidden"
+              animate="visible"
+            >
+              {score}
+            </motion.div>
+            <motion.span
+              variants={messageAnimation}
+              initial="hidden"
+              animate="visible"
+            >
+              <em>"{phrase}"</em>
+            </motion.span>
+          </div>
           <motion.div
-            className="grade"
-            variants={gradeAnimation}
+            className="school-info"
+            variants={schoolContainer}
             initial="hidden"
-            animate="visible"
+            animate="show"
           >
-            {score}
+            <motion.span variants={schoolItems}>
+              <span role="img" aria-label="school">
+                🏫
+              </span>
+              {search}
+            </motion.span>
+            <motion.span variants={schoolItems}>
+              <span role="img" aria-label="dollar">
+                💵
+              </span>
+              Tuition: $
+              {Location === "inState"
+                ? inStateTuition.toLocaleString()
+                : outStateTuition.toLocaleString()}
+            </motion.span>
+            <motion.span variants={schoolItems}>
+              <span role="img" aria-label="receipt">
+                🧾
+              </span>
+              Average Net Price: $
+              {avgNetPricePrivate === "NULL"
+                ? avgNetPricePublic.toLocaleString()
+                : avgNetPricePrivate.toLocaleString()}
+            </motion.span>
+            <motion.span variants={schoolItems}>
+              <span role="img" aria-label="money-in-mouth">
+                🤑
+              </span>
+              Median Ten Year Salary: ${year10outlook.toLocaleString()}
+            </motion.span>
+            <motion.div variants={schoolItems}>
+              <a
+                href={`https://${schoolLink}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="school-link-btn">SCHOOL WEBSITE</button>
+              </a>
+              <a
+                href="https://collegescorecard.ed.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="school-link-btn">SOURCE OF DATA</button>
+              </a>
+            </motion.div>
           </motion.div>
-          <motion.span
-            variants={messageAnimation}
-            initial="hidden"
-            animate="visible"
-          >
-            <em>"{phrase}"</em>
-          </motion.span>
         </div>
-        <motion.div
-          className="school-info"
-          variants={schoolContainer}
-          initial="hidden"
-          animate="show"
+        <div>
+          <Link to="/">
+            <motion.button
+              className="gradient-btn"
+              onClick={handleBackButton}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              GO BACK
+            </motion.button>
+          </Link>
+        </div>
+      </div>
+      <footer className="score-footer">
+        <a
+          href="https://collegescorecard.ed.gov/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <motion.span variants={schoolItems}>
-            <span role="img" aria-label="school">
-              🏫
-            </span>
-            {search}
-          </motion.span>
-          <motion.span variants={schoolItems}>
-            <span role="img" aria-label="dollar">
-              💵
-            </span>
-            Tuition: $
-            {Location === "inState"
-              ? inStateTuition.toLocaleString()
-              : outStateTuition.toLocaleString()}
-          </motion.span>
-          <motion.span variants={schoolItems}>
-            <span role="img" aria-label="receipt">
-              🧾
-            </span>
-            Average Net Price: $
-            {avgNetPricePrivate === "NULL"
-              ? avgNetPricePublic.toLocaleString()
-              : avgNetPricePrivate.toLocaleString()}
-          </motion.span>
-          <motion.span variants={schoolItems}>
-            <span role="img" aria-label="money-in-mouth">
-              🤑
-            </span>
-            Median Ten Year Salary: ${year10outlook.toLocaleString()}
-          </motion.span>
-          <motion.div variants={schoolItems}>
-            <a
-              href={`https://${schoolLink}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="school-link-btn">SCHOOL WEBSITE</button>
-            </a>
-            <a
-              href="https://collegescorecard.ed.gov/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="school-link-btn">SOURCE OF DATA</button>
-            </a>
-          </motion.div>
-        </motion.div>
-      </div>
-      <div>
-        <Link to="/">
-          <motion.button
-            className="gradient-btn"
-            onClick={handleBackButton}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            GO BACK
-          </motion.button>
-        </Link>
-      </div>
+          Source of Data
+        </a>
+        <a
+          href="https://github.com/GameDog9988/check-my-aid"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
+      </footer>
     </motion.div>
   );
 }

@@ -11,12 +11,12 @@
   }
 }
 
-.score-page-container {
+.score-main {
   padding: 2rem 0;
   background-color: #7da3e9;
   border-radius: 20px;
   width: 90%;
-  margin: auto;
+  margin: 4rem auto;
   @media screen and (min-width: $tabletWidth) {
     width: 80%;
   }
@@ -112,5 +112,22 @@
       font-size: 0.9rem;
       width: 200px;
     }
+  }
+}
+
+.score-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  height: 100px;
+  a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+  }
+  @media screen and (min-width: $tabletWidth) {
+    width: 50%;
   }
 }
