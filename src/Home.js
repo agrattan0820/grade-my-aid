@@ -68,13 +68,32 @@ function Home() {
     >
       <div className="home-main">
         <div className="headline-container">
-          <div className="circle1"></div>
-          <h1>Grade your financial aid package</h1>
+          <motion.div
+            className="circle1"
+            initial={{ x: "-100vw", y: "-100vh", opacity: 0 }}
+            animate={{ x: 0, y: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              duration: 1,
+              type: "spring",
+            }}
+          ></motion.div>
+          <motion.h1
+            initial={{ x: "-100vw", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+              type: "spring",
+            }}
+          >
+            Grade your financial aid package
+          </motion.h1>
         </div>
         <div>
           <motion.div
             className="step1-container"
-            initial={{ x: "-100vw", opacity: 0 }}
+            initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
               delay: 0.2,
@@ -124,8 +143,8 @@ function Home() {
           </motion.div>
           <motion.div
             className="step3-container"
-            initial={{ y: "100vh", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ x: "100vw", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{
               delay: 0.8,
               duration: 0.5,
@@ -161,7 +180,16 @@ function Home() {
       </div>
 
       <footer className="home-footer">
-        <div className="circle2"></div>
+        <motion.div
+          className="circle2"
+          initial={{ x: "100vw", y: "100vh", opacity: 0 }}
+          animate={{ x: 0, y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            type: "spring",
+          }}
+        ></motion.div>
         <a
           href="https://collegescorecard.ed.gov/"
           target="_blank"
