@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 function ScoreResult() {
   const universities = useContext(UniversityContext);
-  const { aid, dropdown, locate } = React.useContext(FormContext);
+  const { aid, dropdown, locate } = useContext(FormContext);
   const [aidValue, setAidValue] = aid;
   const [search, setSearch] = dropdown;
   const [location, setLocation] = locate;
@@ -36,8 +36,6 @@ function ScoreResult() {
 
   useEffect(() => {
     computeScore();
-    console.log(medianDebtStudentsCompleted);
-    console.log(medianDebtStudentsNotCompleted);
     // eslint-disable-next-line
   }, []);
 
