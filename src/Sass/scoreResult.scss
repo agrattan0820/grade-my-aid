@@ -60,9 +60,13 @@
   margin: 1rem;
 
   span {
-    width: 400px;
-    font-size: 1.4rem;
+    width: 300px;
+    font-size: 1.2rem;
     font-weight: 300;
+    @media screen and (min-width: $tabletWidth) {
+      width: 400px;
+      font-size: 1.4rem;
+    }
   }
 }
 
