@@ -14,13 +14,9 @@ function ScoreResult() {
   const [score, setScore] = useState("");
   const [phrase, setPhrase] = useState("");
 
-  const filteredData = universities
-    .filter((university) => {
-      return university.INSTNM.toLowerCase().includes(search.toLowerCase());
-    })
-    .splice(0, 50);
-
-  const filteredSchool = filteredData[0];
+  const filteredSchool = universities.find((university) => {
+    return university.INSTNM.toLowerCase().includes(search.toLowerCase());
+  });
 
   const inStateTuition = filteredSchool.TUITIONFEE_IN;
   const outStateTuition = filteredSchool.TUITIONFEE_OUT;
