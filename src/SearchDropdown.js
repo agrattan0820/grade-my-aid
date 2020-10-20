@@ -5,7 +5,7 @@ import { FormContext } from "./FormContext";
 
 function SearchDropdown() {
   const universities = useContext(UniversityContext);
-  const { dropdown } = React.useContext(FormContext);
+  const { dropdown } = useContext(FormContext);
   const [search, setSearch] = dropdown;
 
   const [display, setDisplay] = useState(false);

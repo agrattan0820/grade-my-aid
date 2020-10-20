@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function Home() {
   const universities = useContext(UniversityContext);
-  const { locate, aid, dropdown } = React.useContext(FormContext);
+  const { locate, aid, dropdown } = useContext(FormContext);
   const [location, setLocation] = locate;
   const [aidValue] = aid;
   const [search] = dropdown;
