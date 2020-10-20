@@ -84,6 +84,8 @@ function ScoreResult() {
 
     if (year10outlook >= 100000) {
       pointCounter += 100;
+    } else if (year10outlook >= 85000) {
+      pointCounter += 85;
     } else if (year10outlook >= 75000) {
       pointCounter += 75;
     } else if (year10outlook >= 50000) {
