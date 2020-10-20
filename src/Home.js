@@ -5,7 +5,7 @@ import AidInput from "./AidInput";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Home() {
   const universities = useContext(UniversityContext);
@@ -169,18 +169,20 @@ function Home() {
                 GET YOUR RATING
               </motion.button>
             </Link>
-            {!clickable && (
-              <motion.div
-                className="error"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  type: "spring",
-                }}
-              >
-                There was an input error
-              </motion.div>
-            )}
+            <AnimatePresence>
+              {!clickable && (
+                <motion.div
+                  className="error"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    type: "spring",
+                  }}
+                >
+                  There was an input error
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>

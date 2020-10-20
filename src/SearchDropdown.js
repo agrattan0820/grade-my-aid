@@ -47,6 +47,7 @@ function SearchDropdown() {
         className="search-bar"
         type="text"
         onClick={() => setDisplay(!display)}
+        placeholder="Search..."
         value={search}
         onChange={typeSearch}
       />
