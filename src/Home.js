@@ -21,15 +21,15 @@ function Home() {
 
   const handleSubmit = (e) => {
     if (location === "" || aidValue === "" || search === "") {
-      e.preventDefault();
       setClickable(false);
+      e.preventDefault();
     } else {
       setClickable(true);
     }
 
     if (!universities.find((university) => university.INSTNM === search)) {
-      e.preventDefault();
       setClickable(false);
+      e.preventDefault();
     } else {
       setClickable(true);
     }
