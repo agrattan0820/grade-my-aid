@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 import AidInput from "./AidInput";
@@ -57,6 +57,12 @@ function Home() {
       },
     },
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <motion.div

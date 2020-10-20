@@ -25,7 +25,7 @@ function Modal({ isToggled, setToggled, children }) {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              Close <i class="fas fa-times-circle"></i>
+              Close <i className="fas fa-times-circle"></i>
             </motion.button>
           </motion.div>
         </motion.div>

@@ -34,6 +34,9 @@ function ScoreResult() {
 
   useEffect(() => {
     computeScore();
+    window.scrollTo({
+      top: 0,
+    });
     // eslint-disable-next-line
   }, []);
 
@@ -338,7 +341,7 @@ function ScoreResult() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <i class="fas fa-arrow-circle-left"></i> GO BACK
+              <i className="fas fa-arrow-circle-left"></i> GO BACK
             </motion.button>
           </Link>
         </div>
