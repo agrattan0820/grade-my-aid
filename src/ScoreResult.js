@@ -276,24 +276,18 @@ function ScoreResult() {
             animate="show"
           >
             <motion.span variants={schoolItems}>
-              <span role="img" aria-label="school">
-                🏫
-              </span>
+              <i className="fas fa-school"></i>
               {search}
             </motion.span>
             <motion.span variants={schoolItems}>
-              <span role="img" aria-label="dollar">
-                💵
-              </span>
+              <i className="fas fa-money-bill-alt"></i>
               Tuition Per Year: $
               {location === "inState"
                 ? inStateTuition.toLocaleString()
                 : outStateTuition.toLocaleString()}
             </motion.span>
             <motion.span variants={schoolItems}>
-              <span role="img" aria-label="receipt">
-                🧾
-              </span>
+              <i className="fas fa-balance-scale"></i>
               Average Net Price: $
               {avgNetPricePrivate === "NULL"
                 ? avgNetPricePublic.toLocaleString()
@@ -307,12 +301,18 @@ function ScoreResult() {
                 onClick={() => setToggled(true)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                style={{
+                  padding: "0",
+                  fontSize: "1.5rem",
+                  background: "none",
+                  width: "unset",
+                  height: "unset",
+                  boxShadow: "none",
+                }}
               ></motion.i>
             </motion.span>
             <motion.span variants={schoolItems}>
-              <span role="img" aria-label="money-in-mouth">
-                🤑
-              </span>
+              <i className="fas fa-piggy-bank"></i>
               Median Ten Year Salary: ${year10outlook.toLocaleString()}
             </motion.span>
             <motion.div variants={schoolItems}>
@@ -341,7 +341,7 @@ function ScoreResult() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <i className="fas fa-arrow-circle-left"></i> GO BACK
+              <i className="fas fa-arrow-left"></i> GO BACK
             </motion.button>
           </Link>
         </div>
