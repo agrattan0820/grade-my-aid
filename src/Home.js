@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 import AidInput from "./AidInput";
@@ -9,11 +9,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function Home() {
   const universities = useContext(UniversityContext);
-  const { locate, aid, dropdown } = useContext(FormContext);
+  const { locate, aid, dropdown, submitBtn } = useContext(FormContext);
   const [location, setLocation] = locate;
   const [aidValue] = aid;
   const [search] = dropdown;
-  const [clickable, setClickable] = useState(true);
+  const [clickable, setClickable] = submitBtn;
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
@@ -21,15 +21,15 @@ function Home() {
 
   const handleSubmit = (e) => {
     if (location === "" || aidValue === "" || search === "") {
-      setClickable(false);
       e.preventDefault();
+      setClickable(false);
     } else {
       setClickable(true);
     }
 
     if (!universities.find((university) => university.INSTNM === search)) {
-      setClickable(false);
       e.preventDefault();
+      setClickable(false);
     } else {
       setClickable(true);
     }

@@ -15,11 +15,16 @@ export const FormProvider = (props) => {
     const localData = localStorage.getItem("location");
     return localData ? JSON.parse(localData) : "";
   });
+  const [clickable, setClickable] = useState(() => {
+    const localData = localStorage.getItem("clickable");
+    return localData ? JSON.parse(localData) : "true";
+  });
   useEffect(() => {
     localStorage.setItem("aidValue", JSON.stringify(aidValue));
     localStorage.setItem("search", JSON.stringify(search));
     localStorage.setItem("location", JSON.stringify(location));
-  }, [aidValue, search, location]);
+    localStorage.setItem("clickable", JSON.stringify(clickable));
+  }, [aidValue, search, location, clickable]);
 
   return (
     <FormContext.Provider
@@ -27,6 +32,7 @@ export const FormProvider = (props) => {
         aid: [aidValue, setAidValue],
         dropdown: [search, setSearch],
         locate: [location, setLocation],
+        submitBtn: [clickable, setClickable],
       }}
     >
       {props.children}
