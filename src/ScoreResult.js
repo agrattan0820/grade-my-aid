@@ -305,9 +305,6 @@ function ScoreResult() {
                   padding: "0",
                   fontSize: "1.5rem",
                   background: "none",
-                  width: "unset",
-                  height: "unset",
-                  boxShadow: "none",
                 }}
               ></motion.i>
             </motion.span>
