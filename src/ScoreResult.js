@@ -42,13 +42,13 @@ function ScoreResult() {
 
     if (location === "inState") {
       if (inStateTuition - aidValue < 0) {
-        pointCounter += 80;
+        pointCounter += 90;
       } else if (inStateTuition - aidValue < 1000) {
-        pointCounter += 60;
+        pointCounter += 70;
       } else if (inStateTuition - aidValue < 5000) {
-        pointCounter += 50;
+        pointCounter += 60;
       } else if (inStateTuition - aidValue < 10000) {
-        pointCounter += 40;
+        pointCounter += 50;
       } else if (inStateTuition - aidValue < 15000) {
         pointCounter += 30;
       } else if (inStateTuition - aidValue < 25000) {
@@ -62,13 +62,13 @@ function ScoreResult() {
       }
     } else if (location === "outState") {
       if (outStateTuition - aidValue < 0) {
-        pointCounter += 80;
+        pointCounter += 90;
       } else if (outStateTuition - aidValue < 1000) {
-        pointCounter += 60;
+        pointCounter += 70;
       } else if (outStateTuition - aidValue < 5000) {
-        pointCounter += 50;
+        pointCounter += 60;
       } else if (outStateTuition - aidValue < 10000) {
-        pointCounter += 40;
+        pointCounter += 50;
       } else if (outStateTuition - aidValue < 15000) {
         pointCounter += 30;
       } else if (outStateTuition - aidValue < 25000) {
@@ -153,7 +153,7 @@ function ScoreResult() {
       setPhrase("A solid option with great results");
     } else if (pointCounter >= 145) {
       setScore("B+");
-      setPhrase("Pretty good but could be better");
+      setPhrase("Pretty good aid and outcome");
     } else if (pointCounter >= 130) {
       setScore("B");
       setPhrase("Average isn't necessairly a bad thing");
@@ -281,7 +281,7 @@ function ScoreResult() {
                 💵
               </span>
               Tuition Per Year: $
-              {Location === "inState"
+              {location === "inState"
                 ? inStateTuition.toLocaleString()
                 : outStateTuition.toLocaleString()}
             </motion.span>
