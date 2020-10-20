@@ -3,17 +3,18 @@
 .grade {
   font-size: 10rem;
   font-weight: 200;
+  background-color: $peach;
+  border-radius: 50%;
   @media screen and (min-width: $desktopWidth) {
-    font-size: 25rem;
-    line-height: 1;
-    padding: 0;
-    margin: 0;
+    font-size: 20rem;
+    padding: 2rem;
+    margin: 1rem 0;
   }
 }
 
 .score-main {
   padding: 2rem 0;
-  background-color: #7da3e9;
+  background-color: $blue;
   border-radius: 20px;
   width: 90%;
   margin: 4rem auto;
@@ -101,7 +102,7 @@
 
   .school-link-btn {
     outline: none;
-    border: 3px solid #fd402d;
+    border: 3px solid $red;
     border-radius: 15px;
     width: 100px;
     height: 50px;
@@ -109,17 +110,22 @@
     font-size: 0.8rem;
     font-family: $mainFont;
     background: transparent;
-    color: #fd402d;
+    color: $red;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     &:hover {
-      background: #fd402d;
+      background: $red;
       color: white;
     }
     @media screen and (min-width: $tabletWidth) {
       font-size: 0.9rem;
       width: 200px;
     }
+  }
+
+  i {
+    margin: 0 0.5rem;
+    cursor: pointer;
   }
 }
 

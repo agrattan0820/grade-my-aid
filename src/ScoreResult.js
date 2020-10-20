@@ -4,6 +4,7 @@ import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 import { motion } from "framer-motion";
+import Modal from "./Modal";
 
 function ScoreResult() {
   const universities = useContext(UniversityContext);
@@ -13,6 +14,7 @@ function ScoreResult() {
   const [location, setLocation] = locate;
   const [score, setScore] = useState("");
   const [phrase, setPhrase] = useState("");
+  const [isToggled, setToggled] = useState(false);
 
   const filteredSchool = universities.find((university) => {
     return university.INSTNM.toLowerCase().includes(search.toLowerCase());
@@ -278,7 +280,7 @@ function ScoreResult() {
               <span role="img" aria-label="dollar">
                 💵
               </span>
-              Tuition: $
+              Tuition Per Year: $
               {Location === "inState"
                 ? inStateTuition.toLocaleString()
                 : outStateTuition.toLocaleString()}
@@ -291,6 +293,16 @@ function ScoreResult() {
               {avgNetPricePrivate === "NULL"
                 ? avgNetPricePublic.toLocaleString()
                 : avgNetPricePrivate.toLocaleString()}
+              <Modal isToggled={isToggled} setToggled={setToggled}>
+                Average net price is the cost of attendance per year after
+                grants and scholarship money are applied.
+              </Modal>
+              <motion.i
+                className="fas fa-question-circle"
+                onClick={() => setToggled(true)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              ></motion.i>
             </motion.span>
             <motion.span variants={schoolItems}>
               <span role="img" aria-label="money-in-mouth">
@@ -324,7 +336,7 @@ function ScoreResult() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              GO BACK
+              <i class="fas fa-arrow-circle-left"></i> GO BACK
             </motion.button>
           </Link>
         </div>
