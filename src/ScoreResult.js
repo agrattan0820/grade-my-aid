@@ -303,6 +303,7 @@ function ScoreResult() {
                 whileTap={{ scale: 0.9 }}
                 style={{
                   padding: "0",
+                  margin: "0 .5rem",
                   fontSize: "1.5rem",
                   background: "none",
                 }}

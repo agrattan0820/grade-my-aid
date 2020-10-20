@@ -118,6 +118,7 @@ function Home() {
                 name="schoolState"
                 className="state-radio"
                 value="inState"
+                checked={location === "inState"}
                 onChange={handleRadioClick}
               />
               <span className="radio-control-in"></span>
@@ -128,6 +129,7 @@ function Home() {
                 name="schoolState"
                 className="state-radio"
                 value="outState"
+                checked={location === "outState"}
                 onChange={handleRadioClick}
               />
               <span className="radio-control-out"></span>
