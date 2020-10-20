@@ -15,7 +15,7 @@ function App() {
       <FormProvider>
         <div className="App">
           <header>
-            <h1>checkmyaid</h1>
+            <h1>grademyaid</h1>
           </header>
           <AnimatePresence exitBeforeEnter>
             <Switch location={routeLocation} key={routeLocation.key}>

@@ -1,10 +1,21 @@
 @import "./variables";
 
+.home {
+  height: 100%;
+}
+
 .home-main {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  min-height: 100%;
+  margin-bottom: -100px;
+  &::after {
+    content: "";
+    display: block;
+    height: 100px;
+  }
   .headline-container {
     position: relative;
     text-align: left;
