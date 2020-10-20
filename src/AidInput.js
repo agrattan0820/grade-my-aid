@@ -17,6 +17,8 @@ function AidInput() {
         className="aid-input"
         value={aidValue}
         onChange={updateAidValue}
+        min="0"
+        max="100000"
       />
     </div>
   );
