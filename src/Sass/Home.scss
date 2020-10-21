@@ -170,7 +170,7 @@
   }
 
   .gradient-btn {
-    @media screen and (min-width: $desktopWidth) {
+    @media screen and (min-width: $LGdesktop) {
       width: 250px;
       height: 75px;
       font-size: 1rem;
