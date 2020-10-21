@@ -149,13 +149,13 @@ function ScoreResult() {
 
     if (pointCounter >= 190) {
       setScore("A+");
-      setPhrase("The gold standard of options");
+      setPhrase("The gold standard of financial options");
     } else if (pointCounter >= 175) {
       setScore("A");
       setPhrase("The financial aid office loves you");
     } else if (pointCounter >= 160) {
       setScore("A-");
-      setPhrase("A solid option with great results");
+      setPhrase("A solid option financially with great results");
     } else if (pointCounter >= 145) {
       setScore("B+");
       setPhrase("Pretty good aid and outcome");
@@ -164,10 +164,10 @@ function ScoreResult() {
       setPhrase("Average isn't necessairly a bad thing");
     } else if (pointCounter >= 125) {
       setScore("B-");
-      setPhrase("It's alright");
+      setPhrase("It's financially alright");
     } else if (pointCounter >= 110) {
       setScore("C+");
-      setPhrase("Definitely not the best choice");
+      setPhrase("Definitely not the best choice financially");
     } else if (pointCounter >= 95) {
       setScore("C");
       setPhrase("Look elsewhere maybe");

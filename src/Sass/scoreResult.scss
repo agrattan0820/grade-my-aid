@@ -129,7 +129,7 @@
 
   .school-link-btn {
     outline: none;
-    border: 3px solid $red;
+    border: 3px solid $peach;
     border-radius: 15px;
     width: 100px;
     height: 50px;
@@ -141,7 +141,7 @@
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     &:hover {
-      background: $red;
+      background: $peach;
       color: white;
     }
     @media screen and (min-width: $tabletWidth) {
