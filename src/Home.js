@@ -14,6 +14,7 @@ function Home() {
   const [aidValue] = aid;
   const [search] = dropdown;
   const [clickable, setClickable] = submitBtn;
+  const numReg = /^\d+$/;
 
   const handleRadioClick = (e) => {
     setLocation(e.target.value);
@@ -23,11 +24,12 @@ function Home() {
     if (location === "" || aidValue === "" || search === "") {
       e.preventDefault();
       setClickable(false);
-    } else {
-      setClickable(true);
-    }
-
-    if (!universities.find((university) => university.INSTNM === search)) {
+    } else if (
+      !universities.find((university) => university.INSTNM === search)
+    ) {
+      e.preventDefault();
+      setClickable(false);
+    } else if (aidValue > 100000 || aidValue < 0 || !aidValue.match(numReg)) {
       e.preventDefault();
       setClickable(false);
     } else {
