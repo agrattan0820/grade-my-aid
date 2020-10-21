@@ -110,7 +110,7 @@ function Home() {
             }}
           >
             <h3>Step 1:</h3>
-            <p>Choose a school</p>
+            <p>Enter a school</p>
             <SearchDropdown />
             <div className="state-select">
               <label htmlFor="inState">In-state</label>
