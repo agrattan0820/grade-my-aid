@@ -15,7 +15,10 @@ function SearchDropdown() {
     .filter((university) => {
       return university.INSTNM.toLowerCase().includes(search.toLowerCase());
     })
-    .splice(0, 50);
+    .splice(0, 50)
+    .sort((a, b) => {
+      return b.INSTNM - a.INSTNM;
+    });
 
   const typeSearch = (e) => {
     setSearch(e.target.value);
