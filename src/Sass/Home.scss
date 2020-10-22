@@ -70,14 +70,8 @@
   @media screen and (min-width: $desktopWidth) {
     width: 80%;
     .headline-container {
-      font-size: 3rem;
-    }
-  }
-  @media screen and (min-width: $LGdesktop) {
-    width: 75%;
-    .headline-container {
-      font-size: 4rem;
-      padding: 1rem;
+      font-size: 3.5rem;
+      width: 800px;
       .circle1 {
         top: -200px;
         left: -300px;
@@ -90,6 +84,14 @@
         width: 300px;
         height: 300px;
       }
+    }
+  }
+  @media screen and (min-width: $LGdesktop) {
+    width: 75%;
+    .headline-container {
+      font-size: 4rem;
+      padding: 1rem;
+      width: unset;
       h1 {
         position: relative;
       }
