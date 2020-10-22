@@ -19,6 +19,7 @@ function SearchDropdown() {
 
   const typeSearch = (e) => {
     setSearch(e.target.value);
+    setDisplay(true);
   };
 
   const clickSearch = (school) => {
@@ -27,10 +28,10 @@ function SearchDropdown() {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside, true);
 
     return () => {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside, true);
     };
   }, []);
 
@@ -46,7 +47,7 @@ function SearchDropdown() {
       <input
         className="search-bar"
         type="text"
-        onClick={() => setDisplay(!display)}
+        onClick={() => setDisplay(true)}
         placeholder="Search..."
         value={search}
         onChange={typeSearch}
