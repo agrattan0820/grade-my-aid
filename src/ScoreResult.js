@@ -1,9 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
 import { FormContext } from "./FormContext";
 import { motion } from "framer-motion";
+import { useReactToPrint } from "react-to-print";
 import Modal from "./Modal";
 
 function ScoreResult() {
@@ -16,6 +17,10 @@ function ScoreResult() {
   const [phrase, setPhrase] = useState("");
   const [isToggled, setToggled] = useState(false);
   const [scoreColor, setScoreColor] = useState("");
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const filteredSchool = universities.find((university) => {
     return university.INSTNM.toLowerCase().includes(search.toLowerCase());
@@ -263,8 +268,9 @@ function ScoreResult() {
       exit="exit"
     >
       <div className="score-main">
-        <div className="score-result-container">
+        <div className="score-result-container" ref={componentRef}>
           <div className="grade-container">
+            <h1 style={{ overflow: "hidden", height: "0" }}>grademyaid</h1>
             <motion.div
               className="grade"
               variants={gradeAnimation}
@@ -314,12 +320,6 @@ function ScoreResult() {
                 onClick={() => setToggled(true)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                style={{
-                  padding: "0",
-                  margin: "0 .5rem",
-                  fontSize: "1.5rem",
-                  background: "none",
-                }}
               ></motion.i>
             </motion.span>
             <motion.span variants={schoolItems}>
@@ -334,13 +334,9 @@ function ScoreResult() {
               >
                 <button className="school-link-btn">SCHOOL WEBSITE</button>
               </a>
-              <a
-                href="https://collegescorecard.ed.gov/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="school-link-btn">SOURCE OF DATA</button>
-              </a>
+              <button onClick={handlePrint} className="school-link-btn">
+                DOWNLOAD
+              </button>
             </motion.div>
           </motion.div>
         </div>

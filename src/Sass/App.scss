@@ -117,3 +117,45 @@ input {
     font-size: 1.4rem;
   }
 }
+
+@media print {
+  html,
+  body {
+    color: white;
+    text-align: center;
+  }
+  .grade-container h1 {
+    overflow: visible !important;
+    height: 50px !important;
+    font-family: $mainFont;
+    font-weight: 300;
+    color: whitesmoke;
+  }
+  .school-link-btn {
+    display: none;
+  }
+  .grade-container span {
+    width: 400px;
+    font-size: 1.2rem;
+  }
+  .school-info {
+    position: relative;
+    left: 100px;
+  }
+  .school-info span {
+    width: 600px;
+    font-size: 1.6rem;
+    justify-content: flex-start;
+  }
+  .school-info span i {
+    display: grid;
+    place-items: center;
+    background-color: $blue;
+    width: 30px;
+    height: 30px;
+    margin: 0 0.5rem;
+  }
+  .fa-question-circle {
+    display: none !important;
+  }
+}
