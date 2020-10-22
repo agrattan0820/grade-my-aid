@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Sass/App.scss";
 import { UniversityContext } from "./UniversityContext";
@@ -15,6 +15,7 @@ function ScoreResult() {
   const [score, setScore] = useState("");
   const [phrase, setPhrase] = useState("");
   const [isToggled, setToggled] = useState(false);
+  const [scoreColor, setScoreColor] = useState("");
 
   const filteredSchool = universities.find((university) => {
     return university.INSTNM.toLowerCase().includes(search.toLowerCase());
@@ -59,9 +60,9 @@ function ScoreResult() {
       } else if (inStateTuition - aidValue < 35000) {
         pointCounter += -5;
       } else if (inStateTuition - aidValue < 50000) {
-        pointCounter += -15;
-      } else {
         pointCounter += -20;
+      } else {
+        pointCounter += -40;
       }
     } else if (location === "outState") {
       if (outStateTuition - aidValue < 0) {
@@ -79,9 +80,9 @@ function ScoreResult() {
       } else if (outStateTuition - aidValue < 35000) {
         pointCounter += -5;
       } else if (outStateTuition - aidValue < 50000) {
-        pointCounter += -15;
-      } else {
         pointCounter += -20;
+      } else {
+        pointCounter += -40;
       }
     }
 
@@ -149,36 +150,47 @@ function ScoreResult() {
 
     if (pointCounter >= 190) {
       setScore("A+");
-      setPhrase("The gold standard of financial options");
+      setScoreColor("#9B59B6");
+      setPhrase("This is financial aid royalty");
     } else if (pointCounter >= 175) {
       setScore("A");
+      setScoreColor("#229954");
       setPhrase("The financial aid office loves you");
     } else if (pointCounter >= 160) {
       setScore("A-");
+      setScoreColor("#229954");
       setPhrase("A solid option financially with great results");
     } else if (pointCounter >= 145) {
       setScore("B+");
+      setScoreColor("#58D68D");
       setPhrase("Pretty good aid and outcome");
     } else if (pointCounter >= 130) {
       setScore("B");
+      setScoreColor("#58D68D");
       setPhrase("Average isn't necessairly a bad thing");
     } else if (pointCounter >= 125) {
       setScore("B-");
+      setScoreColor("#58D68D");
       setPhrase("It's financially alright");
     } else if (pointCounter >= 110) {
       setScore("C+");
+      setScoreColor("#F4D03F");
       setPhrase("Definitely not the best choice financially");
     } else if (pointCounter >= 95) {
       setScore("C");
+      setScoreColor("#F4D03F");
       setPhrase("Look elsewhere maybe");
     } else if (pointCounter >= 80) {
       setScore("C-");
+      setScoreColor("#F4D03F");
       setPhrase("Look elsewhere maybe");
     } else if (pointCounter >= 65) {
       setScore("D");
+      setScoreColor("#E74C3C");
       setPhrase("Could be a good school but the money is not there");
     } else {
       setScore("F");
+      setScoreColor("#E74C3C");
       setPhrase("They're just trying to make you poor");
     }
   };
@@ -191,7 +203,7 @@ function ScoreResult() {
 
   const schoolContainer = {
     hidden: { opacity: 0, x: -200 },
-    show: {
+    visible: {
       opacity: 1,
       x: 0,
       transition: {
@@ -203,7 +215,7 @@ function ScoreResult() {
 
   const schoolItems = {
     hidden: { opacity: 0, x: -200 },
-    show: { opacity: 1, x: 0 },
+    visible: { opacity: 1, x: 0 },
   };
 
   const containerVariants = {
@@ -258,6 +270,7 @@ function ScoreResult() {
               variants={gradeAnimation}
               initial="hidden"
               animate="visible"
+              style={{ backgroundColor: `${scoreColor}` }}
             >
               {score}
             </motion.div>
@@ -273,7 +286,7 @@ function ScoreResult() {
             className="school-info"
             variants={schoolContainer}
             initial="hidden"
-            animate="show"
+            animate="visible"
           >
             <motion.span variants={schoolItems}>
               <i className="fas fa-school"></i>

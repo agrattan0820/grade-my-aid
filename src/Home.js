@@ -60,6 +60,11 @@ function Home() {
     },
   };
 
+  const stepVariants = {
+    hidden: { x: "100vw", opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -101,8 +106,9 @@ function Home() {
         <div>
           <motion.div
             className="step1-container"
-            initial={{ x: "100vw", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            variants={stepVariants}
+            initial="hidden"
+            animate="visible"
             transition={{
               delay: 0.2,
               duration: 0.5,
@@ -139,8 +145,9 @@ function Home() {
           </motion.div>
           <motion.div
             className="step2-container"
-            initial={{ x: "100vw", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            variants={stepVariants}
+            initial="hidden"
+            animate="visible"
             transition={{
               delay: 0.5,
               duration: 0.5,
@@ -153,8 +160,9 @@ function Home() {
           </motion.div>
           <motion.div
             className="step3-container"
-            initial={{ x: "100vw", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            variants={stepVariants}
+            initial="hidden"
+            animate="visible"
             transition={{
               delay: 0.8,
               duration: 0.5,

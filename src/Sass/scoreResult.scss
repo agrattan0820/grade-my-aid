@@ -7,7 +7,6 @@
   font-weight: 200;
   width: 200px;
   height: 200px;
-  background-color: $peach;
   border-radius: 50%;
   margin-bottom: 1rem;
   @media screen and (min-width: $desktopWidth) {
@@ -24,7 +23,7 @@
   border-radius: 20px;
   width: 90%;
   min-height: 100%;
-  margin: 4rem auto;
+  margin: 2rem auto 5rem;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
@@ -89,7 +88,7 @@
 
   span {
     width: 300px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 300;
     @media screen and (min-width: $tabletWidth) {
       width: 400px;
