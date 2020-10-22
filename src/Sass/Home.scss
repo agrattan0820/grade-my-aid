@@ -193,9 +193,9 @@
   }
   #inState {
     opacity: 0;
-    width: 10px;
+    width: 20px;
     position: absolute;
-    left: 75px;
+    left: 70px;
     cursor: pointer;
     &:checked + .radio-control-in::after {
       transform: scale(1);
@@ -203,9 +203,9 @@
   }
   #outState {
     opacity: 0;
-    width: 10px;
+    width: 20px;
     position: absolute;
-    right: 10px;
+    right: 7px;
     cursor: pointer;
     &:checked + .radio-control-out::after {
       transform: scale(1);
