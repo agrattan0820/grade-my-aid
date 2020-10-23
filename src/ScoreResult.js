@@ -335,6 +335,7 @@ function ScoreResult() {
                 <button className="school-link-btn">SCHOOL WEBSITE</button>
               </a>
               <button onClick={handlePrint} className="school-link-btn">
+                <i class="fas fa-download"></i>
                 DOWNLOAD
               </button>
             </motion.div>
@@ -348,7 +349,7 @@ function ScoreResult() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <i className="fas fa-arrow-left"></i> GO BACK
+              <motion.i className="fas fa-arrow-left"></motion.i> GO BACK
             </motion.button>
           </Link>
         </div>
