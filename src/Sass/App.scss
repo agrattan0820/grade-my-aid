@@ -124,6 +124,10 @@ input {
     color: white;
     text-align: center;
   }
+  .grade {
+    font-family: $mainFont;
+    font-size: 8rem;
+  }
   .grade-container h1 {
     overflow: visible !important;
     height: 50px !important;
