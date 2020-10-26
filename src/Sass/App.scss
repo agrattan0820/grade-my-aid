@@ -123,15 +123,14 @@ input {
   body {
     color: white;
     text-align: center;
+    font-family: $mainFont;
   }
   .grade {
-    font-family: $mainFont;
     font-size: 8rem;
   }
   .grade-container h1 {
     overflow: visible !important;
     height: 50px !important;
-    font-family: $mainFont;
     font-weight: 300;
     color: whitesmoke;
   }
