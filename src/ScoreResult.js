@@ -63,11 +63,11 @@ function ScoreResult() {
       } else if (inStateTuition - aidValue < 25000) {
         pointCounter += 10;
       } else if (inStateTuition - aidValue < 35000) {
-        pointCounter += -5;
+        pointCounter += -10;
       } else if (inStateTuition - aidValue < 50000) {
-        pointCounter += -20;
+        pointCounter += -30;
       } else {
-        pointCounter += -40;
+        pointCounter += -50;
       }
     } else if (location === "outState") {
       if (outStateTuition - aidValue < 0) {
@@ -83,11 +83,11 @@ function ScoreResult() {
       } else if (outStateTuition - aidValue < 25000) {
         pointCounter += 10;
       } else if (outStateTuition - aidValue < 35000) {
-        pointCounter += -5;
+        pointCounter += -10;
       } else if (outStateTuition - aidValue < 50000) {
-        pointCounter += -20;
+        pointCounter += -30;
       } else {
-        pointCounter += -40;
+        pointCounter += -50;
       }
     }
 
@@ -112,7 +112,7 @@ function ScoreResult() {
     } else if (avgNetPricePublic >= 35000) {
       pointCounter += 10;
     } else if (avgNetPricePublic >= 10000) {
-      pointCounter += 30;
+      pointCounter += 25;
     } else if (avgNetPricePublic >= 0) {
       pointCounter += 40;
     }
@@ -122,7 +122,7 @@ function ScoreResult() {
     } else if (avgNetPricePrivate >= 35000) {
       pointCounter += 10;
     } else if (avgNetPricePrivate >= 10000) {
-      pointCounter += 30;
+      pointCounter += 25;
     } else if (avgNetPricePrivate >= 0) {
       pointCounter += 40;
     }
@@ -165,31 +165,31 @@ function ScoreResult() {
       setScore("A-");
       setScoreColor("#229954");
       setPhrase("A solid option financially with great results");
-    } else if (pointCounter >= 145) {
+    } else if (pointCounter >= 150) {
       setScore("B+");
       setScoreColor("#58D68D");
       setPhrase("Pretty good aid and outcome");
-    } else if (pointCounter >= 130) {
+    } else if (pointCounter >= 140) {
       setScore("B");
       setScoreColor("#58D68D");
       setPhrase("Average isn't necessairly a bad thing");
-    } else if (pointCounter >= 125) {
+    } else if (pointCounter >= 130) {
       setScore("B-");
       setScoreColor("#58D68D");
       setPhrase("It's financially alright");
-    } else if (pointCounter >= 110) {
+    } else if (pointCounter >= 120) {
       setScore("C+");
       setScoreColor("#F4D03F");
       setPhrase("Definitely not the best choice financially");
-    } else if (pointCounter >= 95) {
+    } else if (pointCounter >= 110) {
       setScore("C");
       setScoreColor("#F4D03F");
       setPhrase("Look elsewhere maybe");
-    } else if (pointCounter >= 80) {
+    } else if (pointCounter >= 100) {
       setScore("C-");
       setScoreColor("#F4D03F");
       setPhrase("Look elsewhere maybe");
-    } else if (pointCounter >= 65) {
+    } else if (pointCounter >= 85) {
       setScore("D");
       setScoreColor("#E74C3C");
       setPhrase("Could be a good school but the money is not there");
