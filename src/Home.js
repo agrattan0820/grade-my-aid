@@ -218,7 +218,7 @@ function Home() {
           Source of Data
         </a>
         <a
-          href="https://github.com/GameDog9988/check-my-aid"
+          href="https://github.com/GameDog9988/grade-my-aid"
           target="_blank"
           rel="noopener noreferrer"
         >
