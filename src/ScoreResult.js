@@ -172,7 +172,7 @@ function ScoreResult() {
     } else if (pointCounter >= 140) {
       setScore("B");
       setScoreColor("#58D68D");
-      setPhrase("Average isn't necessairly a bad thing");
+      setPhrase("Average isn't necessarily a bad thing");
     } else if (pointCounter >= 130) {
       setScore("B-");
       setScoreColor("#58D68D");
