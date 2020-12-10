@@ -1,53 +1,40 @@
 @import "./variables";
 
-.grade {
-  display: grid;
-  place-items: center;
-  font-size: 8rem;
-  font-weight: 200;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  @media screen and (min-width: $desktopWidth) {
-    font-size: 20rem;
-    width: 400px;
-    height: 400px;
-    padding: 2rem;
-  }
-}
-
 .score-main {
-  padding: 2rem 0;
-  background-color: $blue;
-  border-radius: 20px;
-  width: 90%;
-  min-height: 100%;
-  margin: 2rem auto 5rem;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
-    0 100px 80px rgba(0, 0, 0, 0.07);
-  @media screen and (min-width: $tabletWidth) {
-    width: 95%;
-  }
-  @media screen and (min-width: $desktopWidth) {
-    width: 75%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+  margin: auto;
 }
 
 .score-result-container {
   display: flex;
-  height: 100%;
-  margin: auto;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 20px;
+  width: 90%;
   @media screen and (min-width: $tabletWidth) {
+    background-color: $blue;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      0 100px 80px rgba(0, 0, 0, 0.07);
+    width: 600px;
+  }
+  @media screen and (min-width: $desktopWidth) {
+    width: 75%;
+    padding: 4rem;
     flex-direction: row;
     justify-content: space-around;
-    height: 650px;
+    @media screen and (max-height: 800px) {
+      padding: 2.4rem;
+    }
   }
+
   button {
     margin: 1rem;
   }
@@ -56,6 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0.8rem 0;
     @media screen and (min-width: $tabletWidth) {
       font-size: 1.2rem;
     }
@@ -65,9 +53,13 @@
     i {
       display: grid;
       place-items: center;
-      background-color: $peach;
+      background-color: $blue;
       border-radius: 50%;
-      padding: 0.8rem;
+      padding: 0.6rem;
+      margin: 0 0.6rem;
+      @media screen and (min-width: $tabletWidth) {
+        background-color: $peach;
+      }
       @media screen and (min-width: $desktopWidth) {
         padding: 0;
         width: 50px;
@@ -90,10 +82,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
+  margin-top: -40px;
+  @media screen and (min-width: $tabletWidth) {
+    margin-top: none;
+    margin: 0 1rem;
+  }
 
   .printable-header {
     display: none;
+  }
+
+  .grade {
+    display: grid;
+    place-items: center;
+    font-size: 8rem;
+    font-weight: 200;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    @media screen and (min-width: $desktopWidth) {
+      font-size: 18rem;
+      width: 350px;
+      height: 350px;
+      padding: 2rem;
+      @media screen and (max-height: 800px) {
+        font-size: 14rem;
+        width: 300px;
+        height: 300px;
+      }
+    }
   }
 
   span {
@@ -108,21 +126,21 @@
 }
 
 .school-info {
+  font-family: $mainFont;
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 1.8rem;
+  align-items: flex-start;
   @media screen and (max-width: $phoneWidth) {
     padding: 0;
   }
   @media screen and (min-width: $tabletWidth) {
-    padding: 0;
     align-items: flex-start;
+    margin: 0 1rem;
   }
 
   span {
-    margin: 1rem auto;
     padding: 0.2rem 0.5rem;
     font-size: 1.2rem;
     @media screen and (max-width: $phoneWidth) {
@@ -133,45 +151,59 @@
       font-size: 1.6rem;
       margin: 1rem 0;
       padding: 0.5rem;
+      @media screen and (max-height: 800px) {
+        font-size: 1.4rem;
+      }
     }
   }
 
-  .school-link-btn {
-    outline: none;
-    border: 3px solid $peach;
-    border-radius: 15px;
-    width: 100px;
-    height: 50px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    font-family: $mainFont;
-    background: transparent;
-    color: white;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    &:hover {
-      background: $peach;
+  .school-btn-container {
+    margin: auto;
+    text-align: center;
+    .school-btn {
+      outline: none;
+      border: 3px solid $blue;
+      border-radius: 15px;
+      width: 100px;
+      height: 50px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      font-family: $mainFont;
+      background: transparent;
       color: white;
-    }
-    @media screen and (min-width: $tabletWidth) {
-      font-size: 0.9rem;
-      width: 200px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      .fa-download {
+        margin-right: 0.4rem;
+      }
+      &:hover {
+        background: $peach;
+        color: white;
+      }
+      @media screen and (min-width: $tabletWidth) {
+        font-size: 0.8rem;
+        width: 175px;
+        border: 3px solid $peach;
+      }
+      .score-back-btn {
+        margin: auto;
+        align-self: center;
+      }
     }
   }
 
-  i {
+  .fa-question-circle {
     margin: 0 0.5rem;
     cursor: pointer;
   }
 }
 
 .score-footer {
-  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: auto;
-  height: 100px;
+  height: 10vh;
   a {
     position: relative;
     color: white;

@@ -9,47 +9,25 @@
   font-family: $mainFont;
   color: white;
   overflow: hidden;
-  height: 100%;
 }
 
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  z-index: 1;
+  @media screen and (min-width: $tabletWidth) {
+    height: 10vh;
+  }
   h1 {
-    position: relative;
-    z-index: 1;
+    font-size: 1.6rem;
+    margin: 0;
     font-family: $mainFont;
     font-weight: 300;
     color: whitesmoke;
-  }
-}
-
-footer {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-  height: 100px;
-  a {
-    position: relative;
-    color: white;
-    text-decoration: none;
-  }
-  .circle2 {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: $blue;
-  }
-  @media screen and (min-width: $tabletWidth) {
-    width: 50%;
-    .circle2 {
-      right: 0px;
-      top: -50px;
-      width: 400px;
-      height: 400px;
+    @media screen and (min-width: $tabletWidth) {
+      font-size: 2rem;
     }
   }
 }

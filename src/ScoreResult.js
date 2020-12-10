@@ -300,10 +300,12 @@ function ScoreResult() {
             </motion.span>
             <motion.span variants={schoolItems}>
               <i className="fas fa-money-bill-alt"></i>
-              Tuition Per Year: $
-              {location === "inState"
-                ? inStateTuition.toLocaleString()
-                : outStateTuition.toLocaleString()}
+              <div>
+                Tuition Per Year: $
+                {location === "inState"
+                  ? inStateTuition.toLocaleString()
+                  : outStateTuition.toLocaleString()}
+              </div>
             </motion.span>
             <motion.span variants={schoolItems}>
               <i className="fas fa-balance-scale"></i>
@@ -326,32 +328,32 @@ function ScoreResult() {
               <i className="fas fa-piggy-bank"></i>
               Median Ten Year Salary: ${year10outlook.toLocaleString()}
             </motion.span>
-            <motion.div variants={schoolItems}>
+            <motion.div variants={schoolItems} className="school-btn-container">
               <a
                 href={`https://${schoolLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="school-link-btn">SCHOOL WEBSITE</button>
+                <button className="school-btn">SCHOOL WEBSITE</button>
               </a>
-              <button onClick={handlePrint} className="school-link-btn">
+              <button onClick={handlePrint} className="school-btn">
                 <i class="fas fa-download"></i>
                 DOWNLOAD
               </button>
+              <div className="score-back-btn">
+                <Link to="/">
+                  <motion.button
+                    className="gradient-btn"
+                    onClick={handleBackButton}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <motion.i className="fas fa-arrow-left"></motion.i> GO BACK
+                  </motion.button>
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
-        </div>
-        <div>
-          <Link to="/">
-            <motion.button
-              className="gradient-btn"
-              onClick={handleBackButton}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <motion.i className="fas fa-arrow-left"></motion.i> GO BACK
-            </motion.button>
-          </Link>
         </div>
       </div>
       <footer className="score-footer">

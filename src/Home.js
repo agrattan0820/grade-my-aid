@@ -103,7 +103,7 @@ function Home() {
             Grade your financial aid package
           </motion.h1>
         </div>
-        <div>
+        <div className="step-containers">
           <motion.div
             className="step1-container"
             variants={stepVariants}
