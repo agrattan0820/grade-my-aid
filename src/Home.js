@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Sass/App.scss";
 import SearchDropdown from "./SearchDropdown";
 import AidInput from "./AidInput";
@@ -14,6 +14,7 @@ function Home() {
   const [aidValue] = aid;
   const [search] = dropdown;
   const [clickable, setClickable] = submitBtn;
+  const [errorTxt, setErrorTxt] = useState("There was an input error");
   const numReg = /^\d+$/;
 
   const handleRadioClick = (e) => {
@@ -21,17 +22,40 @@ function Home() {
   };
 
   const handleSubmit = (e) => {
-    if (location === "" || aidValue === "" || search === "") {
+    if (location === "" && aidValue === "" && search === "") {
       e.preventDefault();
       setClickable(false);
+      setErrorTxt("Please fill in the inputs");
+    } else if (search === "") {
+      e.preventDefault();
+      setClickable(false);
+      setErrorTxt("Please enter a school");
+    } else if (location === "") {
+      e.preventDefault();
+      setClickable(false);
+      setErrorTxt("Please fill in the in-state/out-of-state input");
+    } else if (aidValue === "") {
+      e.preventDefault();
+      setClickable(false);
+      setErrorTxt("Please enter your financial aid");
     } else if (
       !universities.find((university) => university.INSTNM === search)
     ) {
       e.preventDefault();
       setClickable(false);
-    } else if (aidValue > 100000 || aidValue < 0 || !aidValue.match(numReg)) {
+      setErrorTxt("There is no match for your school input");
+    } else if (aidValue > 100000) {
       e.preventDefault();
       setClickable(false);
+      setErrorTxt("Financial aid can't be more than $100,000");
+    } else if (aidValue < 0) {
+      e.preventDefault();
+      setClickable(false);
+      setErrorTxt("Financial aid can't be less than $0");
+    } else if (!aidValue.match(numReg)) {
+      e.preventDefault();
+      setClickable(false);
+      setErrorTxt("Please change financial aid to a number");
     } else {
       setClickable(true);
     }
@@ -173,7 +197,7 @@ function Home() {
             <Link to="/result">
               <motion.button
                 type="submit"
-                className="gradient-btn"
+                className={`gradient-btn ${!clickable ? "unclickable" : ""}`}
                 onClick={handleSubmit}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -191,7 +215,7 @@ function Home() {
                     type: "spring",
                   }}
                 >
-                  There was an input error
+                  {errorTxt}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -210,39 +234,11 @@ function Home() {
             type: "spring",
           }}
         ></motion.div>
-        <motion.a
-          href="https://collegescorecard.ed.gov/"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ y: "100vh", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            delay: 0.2,
-            duration: 0.8,
-            type: "spring",
-          }}
-        >
-          Source of Data
-        </motion.a>
-        <motion.a
-          href="https://github.com/GameDog9988/grade-my-aid"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ y: "100vh", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            delay: 0.4,
-            duration: 0.8,
-            type: "spring",
-          }}
-        >
-          Github
-        </motion.a>
         <motion.p
           initial={{ y: "100vh", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
-            delay: 0.6,
+            delay: 0.2,
             duration: 0.8,
             type: "spring",
           }}
@@ -257,6 +253,34 @@ function Home() {
           </motion.a>{" "}
           and Aaron Wang
         </motion.p>
+        <motion.a
+          href="https://collegescorecard.ed.gov/"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.4,
+            duration: 0.8,
+            type: "spring",
+          }}
+        >
+          Source of Data
+        </motion.a>
+        <motion.a
+          href="https://github.com/GameDog9988/grade-my-aid"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            type: "spring",
+          }}
+        >
+          Github
+        </motion.a>
       </footer>
     </motion.div>
   );
