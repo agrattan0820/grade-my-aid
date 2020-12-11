@@ -106,11 +106,22 @@ input {
   .grade {
     font-size: 8rem;
   }
+  .grade-container {
+    margin: 0;
+  }
   .grade-container h1 {
     overflow: visible !important;
-    height: 50px !important;
+    height: 100px !important;
     font-weight: 300;
     color: whitesmoke;
+    font-size: 2rem;
+  }
+  .score-result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
   }
   .school-link-btn {
     display: none;
@@ -135,6 +146,9 @@ input {
     width: 30px;
     height: 30px;
     margin: 0 0.5rem;
+  }
+  .school-btn-container {
+    display: none;
   }
   .fa-question-circle {
     display: none !important;
