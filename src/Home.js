@@ -205,25 +205,58 @@ function Home() {
           initial={{ x: "100vw", y: "100vh", opacity: 0 }}
           animate={{ x: 0, y: 0, opacity: 1 }}
           transition={{
-            delay: 0.6,
+            delay: 0.8,
             duration: 0.8,
             type: "spring",
           }}
         ></motion.div>
-        <a
+        <motion.a
           href="https://collegescorecard.ed.gov/"
           target="_blank"
           rel="noopener noreferrer"
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.8,
+            type: "spring",
+          }}
         >
           Source of Data
-        </a>
-        <a
+        </motion.a>
+        <motion.a
           href="https://github.com/GameDog9988/grade-my-aid"
           target="_blank"
           rel="noopener noreferrer"
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.4,
+            duration: 0.8,
+            type: "spring",
+          }}
         >
           Github
-        </a>
+        </motion.a>
+        <motion.p
+          initial={{ y: "100vh", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            type: "spring",
+          }}
+        >
+          Created by{" "}
+          <motion.a
+            href="https://agrattan.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Alexander Grattan
+          </motion.a>{" "}
+          and Aaron Wang
+        </motion.p>
       </footer>
     </motion.div>
   );

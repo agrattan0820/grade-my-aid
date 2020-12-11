@@ -258,6 +258,14 @@
   align-items: center;
   margin: auto;
   height: 10vh;
+  p {
+    position: relative;
+    a {
+      position: relative;
+      color: white;
+      text-decoration: none;
+    }
+  }
   a {
     position: relative;
     color: white;
