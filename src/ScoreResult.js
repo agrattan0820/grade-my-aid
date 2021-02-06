@@ -250,7 +250,7 @@ function ScoreResult() {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { delay: 1 },
+      transition: { delay: 1, duration: 0.8, type: "spring" },
     },
   };
 
