@@ -68,7 +68,7 @@ function Home() {
     visible: {
       x: 0,
       transition: {
-        duration: 0.8,
+        duration: 1,
         type: "spring",
         stiffness: 100,
         when: "beforeChildren",
@@ -77,7 +77,7 @@ function Home() {
     exit: {
       x: "-115vw",
       transition: {
-        duration: 0.8,
+        duration: 1,
         type: "spring",
         stiffness: 100,
       },
