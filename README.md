@@ -10,7 +10,7 @@ A website that allows students to grade and compare scores for their college fin
 ## Tools Used
 - React
 - Framer Motion
-- Sass
+- Scss
 - US Deparment of Education College Scorecard
 
 Link to source of data: https://collegescorecard.ed.gov/ 
